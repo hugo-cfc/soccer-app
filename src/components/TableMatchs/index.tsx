@@ -11,3 +11,5 @@ export const TableMatchs: React.FC = () => {
     </>
   );
 };
+
+export default TableMatchs;
