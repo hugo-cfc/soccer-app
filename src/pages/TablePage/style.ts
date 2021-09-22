@@ -1,34 +1,74 @@
 import styled from 'styled-components';
 import { shade } from 'polished';
 
-import BackgroundImg from '../../assets/images/background.jpg';
+import BackgroundImg from '../../assets/images/background2.png';
 
 export const Container = styled.div`
   min-height: 100vh;
 
-  display: flex;
-  justify-content: space-around;
-
   background-image: url(${BackgroundImg});
-  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
 
   * {
     font-family: 'Premier';
-    font-weight: 500;
+  }
+
+  & > header {
+    height: 70px;
+    margin-bottom: 50px;
+
+    background: linear-gradient(
+      180deg,
+      #fd005b 0%,
+      #e90959 52.6%,
+      #fd005b 100%
+    );
+    color: #fff;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    img {
+      width: 146px;
+
+      margin-right: 16px;
+    }
+
+    h1 {
+      font-weight: 300 !important;
+      letter-spacing: 0.05em;
+    }
+  }
+
+  main {
+    display: flex;
+    justify-content: space-around;
   }
 
   table {
     border-collapse: collapse;
 
+    margin-bottom: 50px;
+
     thead tr {
       background-color: #37043c !important;
       border-bottom: 0;
       color: #fff;
+
+      & th#emptyCell {
+        color: #37043c;
+      }
     }
 
     tr {
       background-color: #e6e6e6;
-      border-bottom: 1px solid #37043c;
+
+      td:nth-child(2n + 3) {
+        background: ${shade(0.2, '#e6e6e6')};
+      }
 
       & td {
         color: #37043c;
@@ -53,6 +93,11 @@ export const Container = styled.div`
 
     tr:nth-child(-n + 5) {
       background-color: #00ff7f;
+
+      td:nth-child(2n + 3) {
+        background: ${shade(0.2, '#00ff7f')};
+      }
+
       & td {
         color: #fff;
       }
@@ -60,13 +105,23 @@ export const Container = styled.div`
 
     tr:nth-child(6) {
       background-color: #00f1ff;
+
+      td:nth-child(2n + 3) {
+        background: ${shade(0.2, '#00f1ff')};
+      }
+
       & td {
         color: #fff;
       }
     }
 
-    tr:nth-child(n + 19) {
+    tr:nth-child(n + 18) {
       background-color: #fd005b;
+
+      td:nth-child(2n + 3) {
+        background: ${shade(0.2, '#fd005b')};
+      }
+
       & td {
         color: #fff;
       }
@@ -124,6 +179,8 @@ export const MatchsContainer = styled.section`
 `;
 
 export const MatchContent = styled.div`
+  position: relative;
+
   div.match-header {
     background: #00ff7f;
     color: #37043c;
@@ -132,6 +189,8 @@ export const MatchContent = styled.div`
 
     font-size: 25px;
     text-align: center;
+
+    position: relative;
   }
 
   div.match-content {
@@ -163,9 +222,9 @@ export const MatchContent = styled.div`
 
       font-size: 28px;
 
-      -webkit-box-shadow: 0px 7px 12px 4px rgba(50, 50, 50, 0.62);
-      -moz-box-shadow: 0px 7px 12px 4px rgba(50, 50, 50, 0.62);
-      box-shadow: 0px 7px 12px 4px rgba(50, 50, 50, 0.62);
+      -webkit-box-shadow: 0px -1px 18px 4px rgba(50, 50, 50, 0.82);
+      -moz-box-shadow: 0px -1px 18px 4px rgba(50, 50, 50, 0.82);
+      box-shadow: 0px -1px 18px 4px rgba(50, 50, 50, 0.82);
     }
   }
 `;

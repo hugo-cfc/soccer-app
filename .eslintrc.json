@@ -27,6 +27,7 @@
       "prettier/prettier": "error",
       "class-methods-use-this": "off",
       "@typescript-eslint/camelcase": "off",
+      "no-plusplus": "off",
       "react-hooks/rules-of-hooks": "error",
       "react-hooks/exhaustive-deps": "warn",
       "import/prefer-default-export": "off",
