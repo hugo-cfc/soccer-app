@@ -1,26 +1,131 @@
 import styled from 'styled-components';
 import { shade } from 'polished';
 
-import BackgroundPremierImg from '../../assets/images/backPremier.png';
-import BackgroundBrasileiroImg from '../../assets/images/backBrasileiro.jpg';
+import BackgroundImg from '../../assets/images/background2.png';
 
 export const Container = styled.div`
   min-height: 100vh;
 
-  /* background-image: url(${BackgroundPremierImg}); */
-  background-image: url(${BackgroundBrasileiroImg});
+  background-image: url(${BackgroundImg});
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-position: center;
 
   * {
-    /* font-family: 'Premier'; */
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Premier';
+  }
+
+  & > header {
+    height: 70px;
+    margin-bottom: 50px;
+
+    background: linear-gradient(
+      180deg,
+      #fd005b 0%,
+      #e90959 52.6%,
+      #fd005b 100%
+    );
+    color: #fff;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    img {
+      width: 146px;
+
+      margin-right: 16px;
+    }
+
+    h1 {
+      font-weight: 300 !important;
+      letter-spacing: 0.05em;
+    }
   }
 
   main {
     display: flex;
     justify-content: space-around;
+  }
+
+  table {
+    border-collapse: collapse;
+
+    margin-bottom: 50px;
+
+    thead tr {
+      background-color: #37043c !important;
+      border-bottom: 0;
+      color: #fff;
+
+      & th#emptyCell {
+        color: #37043c;
+      }
+    }
+
+    tr {
+      background-color: #e6e6e6;
+
+      td:nth-child(2n + 3) {
+        background: ${shade(0.2, '#e6e6e6')};
+      }
+
+      & td {
+        color: #37043c;
+
+        &.team-name-td {
+          text-align: left;
+        }
+      }
+    }
+
+    td,
+    th {
+      padding: 8px 10px;
+
+      font-size: 30px;
+      letter-spacing: 0.05em;
+      text-align: center;
+    }
+    tr td:first-child {
+      font-weight: bold;
+    }
+
+    tr:nth-child(-n + 5) {
+      background-color: #00ff7f;
+
+      td:nth-child(2n + 3) {
+        background: ${shade(0.2, '#00ff7f')};
+      }
+
+      & td {
+        color: #fff;
+      }
+    }
+
+    tr:nth-child(6) {
+      background-color: #00f1ff;
+
+      td:nth-child(2n + 3) {
+        background: ${shade(0.2, '#00f1ff')};
+      }
+
+      & td {
+        color: #fff;
+      }
+    }
+
+    tr:nth-child(n + 18) {
+      background-color: #fd005b;
+
+      td:nth-child(2n + 3) {
+        background: ${shade(0.2, '#fd005b')};
+      }
+
+      & td {
+        color: #fff;
+      }
+    }
   }
 `;
 

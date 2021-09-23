@@ -2,8 +2,13 @@ import { useEffect, useState, useRef } from 'react';
 import { IoIosArrowBack } from 'react-icons/io';
 import api from '../../services/api';
 
+import Table from '../../components/Table';
+import PremierThead from '../../components/Table/components/PremierThead';
+import PremierHeader from '../../components/Headers/PremierHeader';
+import BrasileiraoThead from '../../components/Table/components/BrasileiraoThead';
+import BrasileirãoHeader from '../../components/Headers/BrasileirãoHeader';
+
 import PremierLogo from '../../assets/images/premierLogo.svg';
-import PremierLogoHeader from '../../assets/images/premierLogoPurple.svg';
 
 import { Container, MatchContent, MatchsContainer } from './style';
 
@@ -45,21 +50,22 @@ interface MatchData {
 }
 
 export const TablePage: React.FC = () => {
-  const [table, setTable] = useState([]);
+  const [standings, setStandings] = useState([]);
   const [matches, setMatches] = useState([]);
   const [currentMatchday, setCurrentMatchday] = useState<number>(1);
 
-  const urlCompetitions = '/v2/competitions/2021/standings';
+  const urlCompetitions = '/v2/competitions/2013/standings';
+  const regexDate = /(^(\d{4})-(\d{2})-(\d{2}))T((\d{2}):(\d{2}):(\d{2}))Z$/gm;
   const firstRender = useRef(1);
 
   useEffect(() => {
     (async () => {
       const { data } = await api.get(urlCompetitions);
       setCurrentMatchday(data.season.currentMatchday);
-      setTable(data.standings[0].table);
+      setStandings(data.standings[0].table);
 
       const dataMatches = await api.get(
-        `v2/competitions/2021/matches?matchday=${data.season.currentMatchday}`,
+        `v2/competitions/2013/matches?matchday=${data.season.currentMatchday}`,
       );
       setMatches(dataMatches.data.matches);
     })();
@@ -74,7 +80,7 @@ export const TablePage: React.FC = () => {
       }
 
       const dataMatches = await api.get(
-        `v2/competitions/2021/matches?matchday=${currentMatchday}`,
+        `v2/competitions/2013/matches?matchday=${currentMatchday}`,
       );
       setMatches(dataMatches.data.matches);
     })();
@@ -82,44 +88,10 @@ export const TablePage: React.FC = () => {
 
   return (
     <Container>
-      <header>
-        <img src={PremierLogoHeader} alt="Premier League" />
-        <h1>PREMIER LEAGUE 2021-22</h1>
-      </header>
+      <BrasileirãoHeader />
 
       <main>
-        <table>
-          <thead>
-            <tr>
-              <th id="emptyCell">P</th>
-              <th>Time</th>
-              <th>P</th>
-              <th>J</th>
-              <th>V</th>
-              <th>E</th>
-              <th>D</th>
-              <th>SG</th>
-              <th>GP</th>
-              <th>GC</th>
-            </tr>
-          </thead>
-          <tbody>
-            {table.map((team: TeamData) => (
-              <tr key={team.team.id}>
-                <td>{team.position}</td>
-                <td className="team-name-td">{team.team.name}</td>
-                <td>{team.points}</td>
-                <td>{team.playedGames}</td>
-                <td>{team.won}</td>
-                <td>{team.draw}</td>
-                <td>{team.lost}</td>
-                <td>{team.goalDifference}</td>
-                <td>{team.goalsFor}</td>
-                <td>{team.goalsAgainst}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
+        <Table thead={<BrasileiraoThead />} data={standings} />
 
         <MatchsContainer>
           <header>
@@ -143,21 +115,23 @@ export const TablePage: React.FC = () => {
           </div>
 
           {matches.map((match: MatchData) => {
-            const teamHomeLogo: TeamData[] = table.filter(
-              (team: TeamData) => team.team.id === match.homeTeam.id,
+            const teamHomeLogo: TeamData[] = standings.filter(
+              (team: TeamData) => team.team?.id === match.homeTeam.id,
             );
 
-            const teamAwayLogo: TeamData[] = table.filter(
-              (team: TeamData) => team.team.id === match.awayTeam.id,
+            const teamAwayLogo: TeamData[] = standings.filter(
+              (team: TeamData) => team.team?.id === match.awayTeam.id,
             );
 
             return (
               <MatchContent key={match.id}>
-                <div className="match-header">{match.utcDate}</div>
+                <div className="match-header">
+                  {match.utcDate.replace(regexDate, '$5 - $4/$3/$2')}
+                </div>
                 <div className="match-content">
                   <div className="emblem-container">
                     <img
-                      src={teamHomeLogo[0].team.crestUrl}
+                      src={teamHomeLogo[0]?.team?.crestUrl}
                       alt={match.homeTeam.name}
                     />
                   </div>
@@ -172,7 +146,7 @@ export const TablePage: React.FC = () => {
 
                   <div className="emblem-container">
                     <img
-                      src={teamAwayLogo[0].team.crestUrl}
+                      src={teamAwayLogo[0]?.team.crestUrl}
                       alt={match.awayTeam.name}
                     />
                   </div>
