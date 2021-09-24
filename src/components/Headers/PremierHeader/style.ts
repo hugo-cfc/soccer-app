@@ -16,9 +16,4 @@ export const Container = styled.header`
 
     margin-right: 16px;
   }
-
-  h1 {
-    font-weight: 300 !important;
-    letter-spacing: 0.05em;
-  }
 `;

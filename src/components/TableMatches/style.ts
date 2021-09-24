@@ -1,51 +1,9 @@
 import styled from 'styled-components';
-import { shade } from 'polished';
-
-import BackgroundPremierImg from '../../assets/images/backPremier.png';
-import BackgroundBrasileiroImg from '../../assets/images/backBrasileiro.jpg';
-
-export const Container = styled.div`
-  min-height: 100vh;
-
-  /* background-image: url(${BackgroundPremierImg}); */
-  background-image: url(${BackgroundBrasileiroImg});
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-position: center;
-
-  * {
-    /* font-family: 'Premier'; */
-    font-family: 'Roboto', sans-serif;
-  }
-
-  main {
-    display: flex;
-    justify-content: space-around;
-  }
-`;
 
 export const MatchsContainer = styled.section`
-  width: 355px;
-
-  header {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    background-color: #37043c;
-    color: #00f1ff;
-
-    height: 50px;
-
-    img {
-      width: 100px;
-    }
-  }
-
   div#sub-header {
-    background-color: #00f1ff;
-    color: #fff;
-    font-size: 36px;
+    font-size: 30px;
+    font-weight: 500;
 
     display: flex;
     justify-content: space-between;
@@ -54,20 +12,16 @@ export const MatchsContainer = styled.section`
 
     button {
       background: transparent;
-      color: #fff;
       border: 0;
       padding: 0;
 
       font-size: 40px;
 
       display: flex;
+      align-items: center;
 
       &:last-child {
         transform: rotate(180deg);
-      }
-
-      &:hover path {
-        color: ${shade(0.2, '#fff')};
       }
     }
   }
@@ -82,7 +36,8 @@ export const MatchContent = styled.div`
 
     padding: 0;
 
-    font-size: 25px;
+    font-size: 15px;
+    font-weight: 600;
     text-align: center;
 
     position: relative;
@@ -112,14 +67,24 @@ export const MatchContent = styled.div`
       justify-content: space-around;
       align-items: center;
 
+      padding: 10px;
+
       background-color: #37043c;
       color: #fff;
 
-      font-size: 28px;
+      font-size: 22px;
+      text-transform: uppercase;
 
       -webkit-box-shadow: 0px -1px 18px 4px rgba(50, 50, 50, 0.82);
       -moz-box-shadow: 0px -1px 18px 4px rgba(50, 50, 50, 0.82);
       box-shadow: 0px -1px 18px 4px rgba(50, 50, 50, 0.82);
+
+      span {
+        min-width: 55px;
+
+        display: flex;
+        justify-content: center;
+      }
     }
   }
 `;

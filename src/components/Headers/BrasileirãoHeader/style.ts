@@ -29,7 +29,7 @@ export const Container = styled.header`
 
     h1 {
       font-family: 'Roboto', sans-serif;
-      font-weight: bold;
+      font-weight: 900;
       font-size: 28px;
       text-transform: uppercase;
     }

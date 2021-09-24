@@ -3,7 +3,12 @@ import { Container } from './style';
 export const BrasileiraoThead: React.FC = () => {
   return (
     <Container>
-      <tr>
+      <tr id="title-float">
+        <td>
+          Classificação <b>2021</b>
+        </td>
+      </tr>
+      <tr id="header-real">
         <th className="emptyCell">P</th>
         <th className="emptyCell">Time</th>
         <th>P</th>

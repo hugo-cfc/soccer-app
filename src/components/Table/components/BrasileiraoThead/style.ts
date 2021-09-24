@@ -1,7 +1,27 @@
 import styled from 'styled-components';
 
 export const Container = styled.thead`
-  tr {
+  position: relative;
+
+  tr#title-float {
+    td {
+      position: absolute;
+      z-index: 100;
+      top: 26px;
+      left: 48px;
+
+      font-size: 24px;
+      font-weight: 500;
+      text-transform: uppercase;
+      color: #001959;
+
+      b {
+        font-weight: 900;
+      }
+    }
+  }
+
+  tr#header-real {
     height: 120px;
     background: linear-gradient(
       178deg,

@@ -1,13 +1,13 @@
 import { Route, Switch } from 'react-router-dom';
 
 import Home from './pages/Home';
-import TablePage from './pages/TablePage';
+import CompetitionPage from './pages/CompetitionPage';
 
 export const Routes: React.FC = () => {
   return (
     <Switch>
-      <Route path="/" component={Home} />
-      <Route path="/table-page:id" component={TablePage} />
+      <Route exact path="/" component={Home} />
+      <Route path="/competition/:id" component={CompetitionPage} />
     </Switch>
   );
 };

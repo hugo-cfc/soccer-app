@@ -18,12 +18,6 @@ export default createGlobalStyle`
   }
 
   @font-face {
-    font-family: "Premier";
-    src: url("fonts/premier/PremierSans.otf") format('opentype');
-    src: url("fonts/premier/PremierSans.ttf") format('truetype');
-  }
-
-  @font-face {
     font-family: 'LaLiga 15';
     src: url('CoreSansC-15Thin.eot');
     src: local('Core Sans C 15 Thin'), local('CoreSansC-15Thin'),

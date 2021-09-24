@@ -6,7 +6,20 @@ export const Container = styled.thead`
     border-bottom: 0;
     color: #fff;
 
-    & th#emptyCell {
+    font-family: 'Poppins', sans-serif;
+    font-size: 30px;
+    text-transform: uppercase;
+
+    th {
+      padding: 8px 10px;
+      font-weight: 400;
+
+      &:nth-child(-n + 3) {
+        font-weight: bold;
+      }
+    }
+
+    th#emptyCell {
       color: #37043c;
     }
   }

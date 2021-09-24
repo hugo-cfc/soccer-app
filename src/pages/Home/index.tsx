@@ -1,7 +1,5 @@
-import TablePage from '../TablePage';
-
 export const Home: React.FC = () => {
-  return <TablePage />;
+  return <h1>Hello, world!</h1>;
 };
 
 export default Home;
