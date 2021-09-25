@@ -1,11 +1,7 @@
 import { Container } from './style';
 
 export const BrasileiraoMatchesHeader: React.FC = () => {
-  return (
-    <Container>
-      <h1>JOGOS</h1>
-    </Container>
-  );
+  return <Container>JOGOS</Container>;
 };
 
 export default BrasileiraoMatchesHeader;

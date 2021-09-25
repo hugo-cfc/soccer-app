@@ -11,6 +11,9 @@ export const Container = styled.header`
 
   height: 50px;
 
+  font-size: 24px;
+  font-weight: bold;
+
   img {
     width: 100px;
   }

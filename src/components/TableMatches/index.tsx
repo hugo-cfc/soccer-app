@@ -2,13 +2,16 @@ import clsx from 'clsx';
 import { makeStyles } from '@material-ui/styles';
 import { shade } from 'polished';
 import { IoIosArrowBack } from 'react-icons/io';
+
 import TeamData from '../../utils/TeamDataInterface';
 import MatchData from '../../utils/MatchDataInterface';
 
 import PremierMatchesHeader from './Components/Headers/PremierMatchesHeader';
+import PremierContentMatch from './Components/MatchContents/PremierContentMatch';
 import BrasileiraoMatchesHeader from './Components/Headers/BrasileiraoMatchesHeader';
+import BrasileiraoContentMatch from './Components/MatchContents/BrasileiraoContentMatch';
 
-import { MatchContent, MatchsContainer } from './style';
+import { MatchsContainer } from './style';
 
 interface TableMatchesProps {
   onClickBack(): void;
@@ -73,7 +76,6 @@ export const TableMatches: React.FC<TableMatchesProps> = ({
   currentMatchday,
   idCompetition,
 }) => {
-  const regexDate = /(^(\d{4})-(\d{2})-(\d{2}))T((\d{2}):(\d{2}):(\d{2}))Z$/gm;
   const classes = useStyle();
 
   return (
@@ -86,19 +88,7 @@ export const TableMatches: React.FC<TableMatchesProps> = ({
       <div id="headers-wrapper">
         {
           {
-            '2013': (
-              <BrasileiraoMatchesHeader>
-                <div id="sub-header">
-                  <button type="button" onClick={() => onClickBack()}>
-                    <IoIosArrowBack />
-                  </button>
-                  <div>RODADA {currentMatchday}</div>
-                  <button type="button" onClick={() => onClickNext()}>
-                    <IoIosArrowBack />
-                  </button>
-                </div>
-              </BrasileiraoMatchesHeader>
-            ),
+            '2013': <BrasileiraoMatchesHeader />,
             '2021': <PremierMatchesHeader />,
           }[idCompetition]
         }
@@ -124,34 +114,26 @@ export const TableMatches: React.FC<TableMatchesProps> = ({
         );
 
         return (
-          <MatchContent key={match.id}>
-            <div className="match-header">
-              {match.utcDate.replace(regexDate, '$5 - $4/$3/$2')}
-            </div>
-            <div className="match-content">
-              <div className="emblem-container">
-                <img
-                  src={teamHomeLogo[0]?.team?.crestUrl}
-                  alt={match.homeTeam.name}
-                />
-              </div>
-
-              <div className="score">
-                <span>{match.homeTeam.name.slice(0, 3)}</span>
-                <span>{match.score.fullTime.homeTeam}</span>
-                <span>X</span>
-                <span>{match.score.fullTime.awayTeam}</span>
-                <span>{match.awayTeam.name.slice(0, 3)}</span>
-              </div>
-
-              <div className="emblem-container">
-                <img
-                  src={teamAwayLogo[0]?.team.crestUrl}
-                  alt={match.awayTeam.name}
-                />
-              </div>
-            </div>
-          </MatchContent>
+          <div key={match.id}>
+            {
+              {
+                '2021': (
+                  <PremierContentMatch
+                    matchesData={match}
+                    teamHomeLogo={teamHomeLogo}
+                    teamAwayLogo={teamAwayLogo}
+                  />
+                ),
+                '2013': (
+                  <BrasileiraoContentMatch
+                    matchesData={match}
+                    teamHomeLogo={teamHomeLogo}
+                    teamAwayLogo={teamAwayLogo}
+                  />
+                ),
+              }[idCompetition]
+            }
+          </div>
         );
       })}
     </MatchsContainer>

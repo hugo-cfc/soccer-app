@@ -10,6 +10,7 @@ import Table from '../../components/Table';
 import TableMatches from '../../components/TableMatches';
 
 import { Container } from './style';
+import HomeButton from '../../components/HomeButton';
 
 export const CompetitionPage: React.FC = () => {
   const [standings, setStandings] = useState([]);
@@ -78,6 +79,8 @@ export const CompetitionPage: React.FC = () => {
           onClickBack={() => setCurrentMatchday(prevState => prevState - 1)}
           onClickNext={() => setCurrentMatchday(prevState => prevState + 1)}
         />
+
+        <HomeButton />
       </main>
     </Container>
   );
