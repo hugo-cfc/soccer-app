@@ -51,7 +51,7 @@ export const CompetitionPage: React.FC = () => {
   }, [currentMatchday]);
 
   return (
-    <Container>
+    <Container idCompetition={id}>
       {
         {
           '2013': <BrasileirãoHeader />,
