@@ -1,9 +1,12 @@
 import styled from 'styled-components';
 
-import homeBackground from '../../assets/images/homeBackground.jpg';
+import homeBackground from '../../assets/images/backgrounds/homeBackground.jpg';
 
 export const Container = styled.main`
   min-height: 100vh;
+
+  display: flex;
+  justify-content: space-around;
 
   background-image: url(${homeBackground});
   background-repeat: no-repeat;
@@ -12,21 +15,7 @@ export const Container = styled.main`
   font-family: Rajdhani;
   color: #fff;
 
-  position: relative;
-  z-index: -2;
-
-  &::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.53);
-    z-index: -1;
-  }
-
-  section {
+  section.infos {
     width: 804px;
     height: 100vh;
 
@@ -72,6 +61,65 @@ export const Contacts = styled.div`
 
         margin-right: 10px;
       }
+
+      a {
+        text-decoration: none;
+        color: #fff;
+      }
+    }
+  }
+`;
+
+export const CompetitionsContainer = styled.section`
+  width: 710px;
+  height: fit-content;
+  margin-top: 70px;
+  padding: 40px 20px;
+
+  background: rgba(0, 0, 0, 0.44);
+  border: 3px solid #ffffff;
+
+  h1 {
+    font-size: 36px;
+    font-weight: 400;
+    text-align: center;
+
+    margin-bottom: 45px;
+  }
+
+  fieldset {
+    border: 0;
+    border-top: 3px solid;
+    padding-bottom: 40px;
+    margin-left: 10px;
+
+    legend {
+      display: flex;
+      align-items: center;
+
+      font-size: 24px;
+
+      padding-right: 10px;
+
+      svg {
+        font-size: 26px;
+
+        margin-right: 10px;
+      }
+    }
+
+    img {
+      max-width: 160px;
+    }
+
+    div.leagues-container {
+      display: grid;
+      grid-template-columns: repeat(3, 160px);
+      justify-content: center;
+      justify-items: center;
+      align-items: center;
+      column-gap: 70px;
+      row-gap: 20px;
     }
   }
 `;

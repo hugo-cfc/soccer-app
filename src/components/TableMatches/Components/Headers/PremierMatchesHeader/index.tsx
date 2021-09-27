@@ -1,4 +1,4 @@
-import PremierLogo from '../../../../../assets/images/premierLogo.svg';
+import PremierLogo from '../../../../../assets/images/competitionsLogo/premierLogo.svg';
 
 import { Container } from './style';
 

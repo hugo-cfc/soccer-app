@@ -1,4 +1,4 @@
-import PremierLogoHeader from '../../../assets/images/premierLogoPurple.svg';
+import PremierLogoHeader from '../../../assets/images/competitionsLogo/premierLogoPurple.svg';
 
 import { Container } from './style';
 

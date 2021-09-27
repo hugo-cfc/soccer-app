@@ -1,4 +1,4 @@
-import BrasileiraLogo from '../../../assets/images/logoBrasileirao.png';
+import BrasileiraLogo from '../../../assets/images/competitionsLogo/logoBrasileirao.png';
 
 import { Container } from './style';
 

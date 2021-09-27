@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
-import BackgroundPremierImg from '../../assets/images/backPremier.png';
-import BackgroundBrasileiroImg from '../../assets/images/backBrasileiro.jpg';
+import BackgroundPremierImg from '../../assets/images/backgrounds/backPremier.png';
+import BackgroundBrasileiroImg from '../../assets/images/backgrounds/backBrasileiro.jpg';
 
 interface backgroundSelectorProps {
   [competitionId: string]: string;
