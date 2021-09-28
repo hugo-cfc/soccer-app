@@ -1,6 +1,18 @@
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 
 import homeBackground from '../../assets/images/backgrounds/homeBackground.jpg';
+
+const leftFromRightAnimation = keyframes`
+  0% {
+    left: -500px;
+    opacity: 0.5;
+  }
+
+  100% {
+    left: 0px;
+    opacity: 1;
+  }
+`;
 
 export const Container = styled.main`
   min-height: 100vh;
@@ -8,6 +20,13 @@ export const Container = styled.main`
   display: flex;
   justify-content: space-around;
 
+  @media (max-width: 900px) {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  background-color: #20212b;
   background-image: url(${homeBackground});
   background-repeat: no-repeat;
   background-position: center center;
@@ -16,35 +35,62 @@ export const Container = styled.main`
   color: #fff;
 
   section.infos {
-    width: 804px;
+    width: 38vw;
+    max-width: 804px;
     height: 100vh;
+
+    position: relative;
+
+    animation-name: ${leftFromRightAnimation};
+    animation-duration: 1.5s;
 
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
+
+    @media (max-width: 900px) {
+      width: 80vw;
+      height: auto;
+
+      justify-content: center;
+    }
   }
 `;
 
 export const InfoProject = styled.div`
   margin-bottom: 55px;
 
+  animation-name: ${leftFromRightAnimation};
+  animation-duration: 5s;
+
   h1 {
-    font-size: 96px;
+    font-size: 5.11vw;
     font-weight: 400;
   }
 
   p {
-    font-size: 36px;
+    font-size: 1.92vw;
+  }
+
+  @media (max-width: 900px) {
+    h1 {
+      font-size: 10vw;
+      font-weight: 400;
+    }
+
+    p {
+      font-size: 4vw;
+    }
   }
 `;
 
 export const Contacts = styled.div`
-  width: 543px;
+  width: 38vw;
 
   margin-bottom: 96px;
 
   h3 {
-    font-size: 48px;
+    font-size: 2.559vw;
     font-weight: 400;
   }
 
@@ -53,9 +99,6 @@ export const Contacts = styled.div`
     grid-template-columns: 1fr 1fr;
 
     div.contact-container {
-      display: flex;
-      align-items: center;
-
       svg {
         font-size: 20px;
 
@@ -64,17 +107,53 @@ export const Contacts = styled.div`
 
       a {
         text-decoration: none;
+        font-size: 0.86vw;
         color: #fff;
+
+        display: flex;
+        align-items: center;
+
+        @media (max-width: 1500px) {
+          font-size: 16px;
+        }
+
+        @media (max-width: 1200px) {
+          font-size: 12px;
+        }
+      }
+    }
+  }
+
+  @media (max-width: 900px) {
+    width: 80vw;
+
+    h3 {
+      font-size: 5vw;
+    }
+
+    div.contacts-container {
+      div.contact-container {
+        svg {
+          font-size: 20px;
+
+          margin-right: 10px;
+        }
+
+        a {
+          font-size: 2.7vw;
+        }
       }
     }
   }
 `;
 
 export const CompetitionsContainer = styled.section`
-  width: 710px;
+  width: 40.4vw;
+  max-width: 710px;
   height: fit-content;
-  margin-top: 70px;
   padding: 40px 20px;
+
+  align-self: center;
 
   background: rgba(0, 0, 0, 0.44);
   border: 3px solid #ffffff;
@@ -91,7 +170,10 @@ export const CompetitionsContainer = styled.section`
     border: 0;
     border-top: 3px solid;
     padding-bottom: 40px;
-    margin-left: 10px;
+
+    &:last-child {
+      padding: 0;
+    }
 
     legend {
       display: flex;
@@ -109,17 +191,59 @@ export const CompetitionsContainer = styled.section`
     }
 
     img {
+      width: 9vw;
       max-width: 160px;
     }
 
     div.leagues-container {
       display: grid;
-      grid-template-columns: repeat(3, 160px);
+      grid-template-columns: repeat(3, 25%);
       justify-content: center;
       justify-items: center;
       align-items: center;
-      column-gap: 70px;
-      row-gap: 20px;
+      column-gap: 12%;
+      row-gap: 5%;
+    }
+  }
+
+  @media (max-width: 900px) {
+    width: 80vw;
+    height: auto;
+    margin-bottom: 30px;
+
+    h1 {
+      font-size: 5vw;
+    }
+
+    fieldset {
+      legend {
+        font-size: 24px;
+
+        svg {
+          font-size: 26px;
+
+          margin-right: 10px;
+        }
+      }
+
+      img {
+        width: 14vw;
+        max-width: 160px;
+      }
+
+      div.leagues-container {
+        grid-template-columns: repeat(3, 25%);
+        column-gap: 12%;
+        row-gap: 5%;
+
+        @media (max-width: 650px) {
+          grid-template-columns: repeat(2, 50%);
+          column-gap: 12%;
+          row-gap: 10%;
+
+          margin: 30px 0;
+        }
+      }
     }
   }
 `;

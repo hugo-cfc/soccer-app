@@ -3,9 +3,13 @@ import styled from 'styled-components';
 export const Container = styled.div`
   position: relative;
 
+  width: inherit;
+
   div.match-header {
     background: #00ff7f;
     color: #37043c;
+
+    width: inherit;
 
     padding: 0;
 
@@ -20,6 +24,8 @@ export const Container = styled.div`
     display: flex;
     justify-content: space-between;
 
+    width: inherit;
+
     background: #fff;
 
     div.emblem-container {
@@ -27,10 +33,14 @@ export const Container = styled.div`
       justify-content: center;
       align-items: center;
 
-      padding: 6px 16px;
+      padding: 0.32vw 0.852vw;
 
       img {
-        width: 40px;
+        max-width: 40px;
+
+        @media (max-width: 865px) {
+          max-width: 30px;
+        }
       }
     }
 
@@ -40,7 +50,9 @@ export const Container = styled.div`
       justify-content: space-around;
       align-items: center;
 
-      padding: 10px;
+      width: inherit;
+
+      padding: 0.533vw;
 
       background-color: #37043c;
       color: #fff;

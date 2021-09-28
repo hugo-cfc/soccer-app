@@ -136,34 +136,36 @@ export const Table: React.FC<TableProps> = ({ data, thead, idCompetition }) => {
   const classes = useStyle();
 
   return (
-    <Container>
-      <table>
-        {thead}
-        <tbody>
-          {data.map((team: TeamData) => (
-            <tr
-              key={team.team.id}
-              className={clsx({
-                [classes.premierLeague]: idCompetition === '2021',
-                [classes.brasileirao]: idCompetition === '2013',
-              })}
-            >
-              <td className="positionCell">
-                <div className="positionContainer">{team.position}</div>
-              </td>
-              <td className="team-name-td">{team.team.name}</td>
-              <td>{team.points}</td>
-              <td>{team.playedGames}</td>
-              <td>{team.won}</td>
-              <td>{team.draw}</td>
-              <td>{team.lost}</td>
-              <td>{team.goalDifference}</td>
-              <td>{team.goalsFor}</td>
-              <td>{team.goalsAgainst}</td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
+    <Container className="table-container">
+      <div>
+        <table>
+          {thead}
+          <tbody>
+            {data.map((team: TeamData) => (
+              <tr
+                key={team.team.id}
+                className={clsx({
+                  [classes.premierLeague]: idCompetition === '2021',
+                  [classes.brasileirao]: idCompetition === '2013',
+                })}
+              >
+                <td className="positionCell">
+                  <div className="positionContainer">{team.position}</div>
+                </td>
+                <td className="team-name-td">{team.team.name}</td>
+                <td>{team.points}</td>
+                <td>{team.playedGames}</td>
+                <td>{team.won}</td>
+                <td>{team.draw}</td>
+                <td>{team.lost}</td>
+                <td>{team.goalDifference}</td>
+                <td>{team.goalsFor}</td>
+                <td>{team.goalsAgainst}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
     </Container>
   );
 };

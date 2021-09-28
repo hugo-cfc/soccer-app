@@ -21,11 +21,6 @@ import {
   CompetitionsContainer,
 } from './style';
 
-//   {
-//     <h1>BRASILEIRO</h1>
-//   </NavLink>
-// </div>
-
 export const Home: React.FC = () => {
   return (
     <Container>
@@ -43,42 +38,42 @@ export const Home: React.FC = () => {
           <h3>Contatos do Desenvolvedor:</h3>
           <div className="contacts-container">
             <div className="contact-container">
-              <AiOutlineMail />
-
               <a
                 href="mailto: hugocfc98@gmail.com"
                 target="_blank"
                 rel="noreferrer"
               >
+                <AiOutlineMail />
                 hugocfc98@gmail.com
               </a>
             </div>
 
             <div className="contact-container">
-              <AiFillGithub />
-
               <a
                 href="https://github.com/hugo-cfc"
                 target="_blank"
                 rel="noreferrer"
               >
+                <AiFillGithub />
                 github.com/hugo-cfc
               </a>
             </div>
             <div className="contact-container">
-              <AiFillLinkedin />
-
               <a
                 href="https://linkedin.com/in/hugo-cesar"
                 target="_blank"
                 rel="noreferrer"
               >
+                <AiFillLinkedin />
                 linkedin.com/in/hugo-cesar
               </a>
             </div>
 
             <div className="contact-container">
-              <AiFillPhone /> <a href="tel:82988046265">(82) 98804-6265</a>
+              <a href="tel:82988046265">
+                <AiFillPhone />
+                (82) 98804-6265
+              </a>
             </div>
           </div>
         </Contacts>
@@ -86,18 +81,20 @@ export const Home: React.FC = () => {
 
       <CompetitionsContainer>
         <h1>Escolha o campeonato</h1>
+
         <fieldset>
           <legend>
             <BiWorld /> Europa
           </legend>
+
           <div className="leagues-container">
-            <img src={laLigaLogo} alt="" />
+            <img src={laLigaLogo} alt="La Liga" />
             <NavLink to="/competition/2021">
-              <img src={premierLogo} alt="" />
+              <img src={premierLogo} alt="Premier League" />
             </NavLink>
-            <img src={ligue1Logo} alt="" />
-            <img src={bundesligaLogo} alt="" />
-            <img src={serieALogo} alt="" />
+            <img src={ligue1Logo} alt="Ligue 1" />
+            <img src={bundesligaLogo} alt="Bundesliga" />
+            <img src={serieALogo} alt="Serie A TIM" />
           </div>
         </fieldset>
 
@@ -105,9 +102,12 @@ export const Home: React.FC = () => {
           <legend>
             <BiWorld /> América
           </legend>
-          <NavLink to="/competition/2013">
-            <img src={brasileiraoLogo} alt="" />
-          </NavLink>
+
+          <div className="leagues-container">
+            <NavLink to="/competition/2013">
+              <img src={brasileiraoLogo} alt="Brasileirão" />
+            </NavLink>
+          </div>
         </fieldset>
       </CompetitionsContainer>
     </Container>

@@ -1,9 +1,14 @@
 import styled from 'styled-components';
 
 export const MatchsContainer = styled.div`
-  margin-bottom: 15px;
+  margin-bottom: 100px;
 
   min-width: 355px;
+
+  @media (max-width: 500px) {
+    min-width: 0vw;
+    width: 100vw;
+  }
 
   div#sub-header {
     font-size: 25px;

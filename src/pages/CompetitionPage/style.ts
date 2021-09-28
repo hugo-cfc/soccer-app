@@ -30,4 +30,17 @@ export const Container = styled.div<ContainerProps>`
     display: flex;
     justify-content: space-around;
   }
+
+  @media (max-width: 1350px) {
+    main {
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+
+  @media (max-width: 865px) {
+    main {
+    }
+  }
 `;
