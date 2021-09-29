@@ -88,7 +88,9 @@ export const Home: React.FC = () => {
           </legend>
 
           <div className="leagues-container">
-            <img src={laLigaLogo} alt="La Liga" />
+            <NavLink to="/competition/2014">
+              <img src={laLigaLogo} alt="La Liga" />
+            </NavLink>
             <NavLink to="/competition/2021">
               <img src={premierLogo} alt="Premier League" />
             </NavLink>

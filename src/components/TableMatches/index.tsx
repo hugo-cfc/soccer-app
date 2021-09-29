@@ -46,6 +46,30 @@ const useStyle = makeStyles({
       },
     },
   },
+
+  laLiga: {
+    fontFamily: 'Poppins, sans-serif',
+
+    '& div#sub-header': {
+      backgroundColor: '#00f1ff',
+      color: '#fff',
+      fontSize: '30px',
+      fontWeight: 500,
+
+      display: 'flex',
+      justifyContent: 'space-between',
+
+      padding: '14px 10px',
+
+      '& button': {
+        color: '#fff',
+
+        '&:hover path': {
+          color: shade(0.2, '#fff'),
+        },
+      },
+    },
+  },
   brasileirao: {
     backgroundColor: '#001959',
 
@@ -81,6 +105,7 @@ export const TableMatches: React.FC<TableMatchesProps> = ({
   return (
     <MatchsContainer
       className={clsx({
+        [classes.laLiga]: idCompetition === '2014',
         [classes.premierLeague]: idCompetition === '2021',
         [classes.brasileirao]: idCompetition === '2013',
       })}
@@ -90,6 +115,7 @@ export const TableMatches: React.FC<TableMatchesProps> = ({
           {
             '2013': <BrasileiraoMatchesHeader />,
             '2021': <PremierMatchesHeader />,
+            '2014': <PremierMatchesHeader />,
           }[idCompetition]
         }
 
@@ -118,6 +144,13 @@ export const TableMatches: React.FC<TableMatchesProps> = ({
             {
               {
                 '2021': (
+                  <PremierContentMatch
+                    matchesData={match}
+                    teamHomeLogo={teamHomeLogo}
+                    teamAwayLogo={teamAwayLogo}
+                  />
+                ),
+                '2014': (
                   <PremierContentMatch
                     matchesData={match}
                     teamHomeLogo={teamHomeLogo}

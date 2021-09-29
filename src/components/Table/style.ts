@@ -10,13 +10,9 @@ export const Container = styled.div`
 
     font-size: 20px !important;
 
-    table tbody {
-      tr {
-        td,
-        th {
-          font-size: 20px;
-        }
-      }
+    table tbody tr td,
+    th {
+      font-size: 20px;
     }
   }
 
@@ -30,17 +26,13 @@ export const Container = styled.div`
     margin-bottom: 50px;
   }
 
-  table tbody {
-    tr {
-      td {
-        padding: 8px 10px;
-        text-align: center;
-        text-transform: uppercase;
+  table tbody tr td {
+    padding: 8px 10px;
+    text-align: center;
+    text-transform: uppercase;
 
-        &.team-name-td {
-          text-align: left;
-        }
-      }
+    &.team-name-td {
+      text-align: left;
     }
   }
 `;

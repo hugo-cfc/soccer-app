@@ -2,6 +2,7 @@ import styled from 'styled-components';
 
 import BackgroundPremierImg from '../../assets/images/backgrounds/backPremier.png';
 import BackgroundBrasileiroImg from '../../assets/images/backgrounds/backBrasileiro.jpg';
+import BackgroundLaLigaImg from '../../assets/images/backgrounds/backLaLiga.jpg';
 
 interface backgroundSelectorProps {
   [competitionId: string]: string;
@@ -14,6 +15,7 @@ interface ContainerProps {
 const backgrounds: backgroundSelectorProps = {
   '2021': `url(${BackgroundPremierImg})`,
   '2013': `url(${BackgroundBrasileiroImg})`,
+  '2014': `url(${BackgroundLaLigaImg})`,
 };
 
 export const Container = styled.div<ContainerProps>`
@@ -25,6 +27,7 @@ export const Container = styled.div<ContainerProps>`
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-position: center;
+  background-size: cover;
 
   main {
     display: flex;

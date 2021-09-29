@@ -2,15 +2,16 @@ import { useEffect, useState, useRef } from 'react';
 import { useParams } from 'react-router-dom';
 import api from '../../services/api';
 
-import BrasileirãoHeader from '../../components/Headers/BrasileirãoHeader';
+import HomeButton from '../../components/HomeButton';
 import PremierHeader from '../../components/Headers/PremierHeader';
 import PremierThead from '../../components/Table/components/PremierThead';
+import BrasileirãoHeader from '../../components/Headers/BrasileirãoHeader';
 import BrasileiraoThead from '../../components/Table/components/BrasileiraoThead';
+import LaLigaHeader from '../../components/Headers/LaLigaHeader';
 import Table from '../../components/Table';
 import TableMatches from '../../components/TableMatches';
 
 import { Container } from './style';
-import HomeButton from '../../components/HomeButton';
 
 export const CompetitionPage: React.FC = () => {
   const [standings, setStandings] = useState([]);
@@ -56,6 +57,7 @@ export const CompetitionPage: React.FC = () => {
         {
           '2013': <BrasileirãoHeader />,
           '2021': <PremierHeader />,
+          '2014': <LaLigaHeader />,
         }[id]
       }
 
@@ -65,6 +67,7 @@ export const CompetitionPage: React.FC = () => {
             {
               '2013': <BrasileiraoThead />,
               '2021': <PremierThead />,
+              '2014': <PremierThead />,
             }[id]
           }
           data={standings}

@@ -68,6 +68,53 @@ const useStyle = makeStyles({
     },
   },
 
+  laLiga: {
+    background: 'rgba(0, 0, 0, 0.66)',
+    borderRadius: '10px',
+    color: '#92DAEC',
+
+    fontSize: '24px',
+
+    '& td': {
+      fontFamily: 'Poppins, sans-serif',
+
+      borderRadius: '4px',
+
+      background: 'rgba(12, 27, 35, 0.66)',
+
+      '&:nth-child(-n + 2)': {
+        color: '#F4FCC8',
+      },
+
+      '&:nth-child(2n + 4)': {
+        background: 'rgba(12, 18, 21, 0.66)',
+      },
+    },
+
+    '&:nth-child(-n + 4) td:first-child': {
+      background: '#323578',
+    },
+
+    '&:nth-child(n + 5):nth-child(-n + 6) td:first-child': {
+      background: '#7D4C9C;',
+    },
+
+    '&:nth-child(n + 18) td:first-child': {
+      background: '#C13C2D;',
+    },
+  },
+
+  laLigaContainer: {
+    background: 'rgba(0, 0, 0, 0.66)',
+
+    padding: '17px',
+    borderRadius: '10px',
+
+    '& div#table-container-inside table': {
+      borderCollapse: 'separate',
+    },
+  },
+
   brasileirao: {
     backgroundColor: '#fff',
 
@@ -136,8 +183,12 @@ export const Table: React.FC<TableProps> = ({ data, thead, idCompetition }) => {
   const classes = useStyle();
 
   return (
-    <Container className="table-container">
-      <div>
+    <Container
+      className={clsx('table-container', {
+        [classes.laLigaContainer]: idCompetition === '2014',
+      })}
+    >
+      <div id="table-container-inside">
         <table>
           {thead}
           <tbody>
@@ -145,6 +196,7 @@ export const Table: React.FC<TableProps> = ({ data, thead, idCompetition }) => {
               <tr
                 key={team.team.id}
                 className={clsx({
+                  [classes.laLiga]: idCompetition === '2014',
                   [classes.premierLeague]: idCompetition === '2021',
                   [classes.brasileirao]: idCompetition === '2013',
                 })}
