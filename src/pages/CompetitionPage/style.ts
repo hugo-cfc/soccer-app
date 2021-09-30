@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 import BackgroundPremierImg from '../../assets/images/backgrounds/backPremier.png';
 import BackgroundBrasileiroImg from '../../assets/images/backgrounds/backBrasileiro.jpg';
@@ -34,16 +34,30 @@ export const Container = styled.div<ContainerProps>`
     justify-content: space-around;
   }
 
+  ${({ idCompetition }) =>
+    idCompetition === '2014' &&
+    css`
+      @media (max-width: 1570px) {
+        main {
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+
+          & > div:first-child {
+            margin-bottom: 40px;
+          }
+        }
+    `};
+
   @media (max-width: 1350px) {
     main {
       flex-direction: column;
       justify-content: center;
       align-items: center;
-    }
-  }
 
-  @media (max-width: 865px) {
-    main {
+      & > div:first-child {
+        margin-bottom: 40px;
+      }
     }
   }
 `;

@@ -1,6 +1,12 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
-export const Container = styled.div`
+interface ContainerProps {
+  idCompetition?: string;
+}
+
+export const Container = styled.div<ContainerProps>`
+  max-width: 98vw;
+
   @media (max-width: 870px) {
     align-self: flex-start;
   }
@@ -16,7 +22,7 @@ export const Container = styled.div`
     }
   }
 
-  & > div {
+  div#table-container-inside {
     overflow: auto;
   }
 
@@ -24,15 +30,26 @@ export const Container = styled.div`
     border-collapse: collapse;
 
     margin-bottom: 50px;
-  }
 
-  table tbody tr td {
-    padding: 8px 10px;
-    text-align: center;
-    text-transform: uppercase;
+    ${({ idCompetition }) =>
+      idCompetition === '2014' &&
+      css`
+        tbody:before {
+          content: '@';
+          display: block;
+          line-height: 10px;
+          text-indent: -99999px;
+        }
+      `};
 
-    &.team-name-td {
-      text-align: left;
+    tbody tr td {
+      padding: 8px 10px;
+      text-align: center;
+      text-transform: uppercase;
+
+      &.team-name-td {
+        text-align: left;
+      }
     }
   }
 `;

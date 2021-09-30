@@ -10,6 +10,8 @@ import PremierMatchesHeader from './Components/Headers/PremierMatchesHeader';
 import PremierContentMatch from './Components/MatchContents/PremierContentMatch';
 import BrasileiraoMatchesHeader from './Components/Headers/BrasileiraoMatchesHeader';
 import BrasileiraoContentMatch from './Components/MatchContents/BrasileiraoContentMatch';
+import LaLigaMatchesHeader from './Components/Headers/LaLigaMatchesHeader';
+import LaLigaContentMatch from './Components/MatchContents/LaLigaContentMatch';
 
 import { MatchsContainer } from './style';
 
@@ -48,13 +50,18 @@ const useStyle = makeStyles({
   },
 
   laLiga: {
-    fontFamily: 'Poppins, sans-serif',
+    background: 'rgba(0, 0, 0, 0.66)',
+    borderRadius: '10px',
+
+    fontFamily: 'Core Sans C 25, sans-serif',
+
+    padding: '10px',
 
     '& div#sub-header': {
-      backgroundColor: '#00f1ff',
-      color: '#fff',
+      backgroundColor: 'transparent',
+      color: '#92DAEC',
       fontSize: '30px',
-      fontWeight: 500,
+      fontWeight: 200,
 
       display: 'flex',
       justifyContent: 'space-between',
@@ -62,14 +69,15 @@ const useStyle = makeStyles({
       padding: '14px 10px',
 
       '& button': {
-        color: '#fff',
+        color: '#92DAEC',
 
         '&:hover path': {
-          color: shade(0.2, '#fff'),
+          color: shade(0.2, '#92DAEC'),
         },
       },
     },
   },
+
   brasileirao: {
     backgroundColor: '#001959',
 
@@ -115,7 +123,7 @@ export const TableMatches: React.FC<TableMatchesProps> = ({
           {
             '2013': <BrasileiraoMatchesHeader />,
             '2021': <PremierMatchesHeader />,
-            '2014': <PremierMatchesHeader />,
+            '2014': <LaLigaMatchesHeader />,
           }[idCompetition]
         }
 
@@ -151,7 +159,7 @@ export const TableMatches: React.FC<TableMatchesProps> = ({
                   />
                 ),
                 '2014': (
-                  <PremierContentMatch
+                  <LaLigaContentMatch
                     matchesData={match}
                     teamHomeLogo={teamHomeLogo}
                     teamAwayLogo={teamAwayLogo}

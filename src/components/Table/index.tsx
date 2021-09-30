@@ -6,6 +6,8 @@ import { shade } from 'polished';
 
 import TeamData from '../../utils/TeamDataInterface';
 
+import laLigaLogo from '../../assets/images/competitionsLogo/laligaLogoBlue.svg';
+
 import { Container } from './style';
 
 interface TableProps {
@@ -74,9 +76,12 @@ const useStyle = makeStyles({
     color: '#92DAEC',
 
     fontSize: '24px',
+    whiteSpace: 'nowrap',
+
+    fontFamily: 'Core Sans C 25, sans-serif',
 
     '& td': {
-      fontFamily: 'Poppins, sans-serif',
+      padding: '0px 17px !important',
 
       borderRadius: '4px',
 
@@ -99,6 +104,10 @@ const useStyle = makeStyles({
       background: '#7D4C9C;',
     },
 
+    '&:nth-child(n + 7):nth-child(-n + 17) td:first-child': {
+      border: '1px solid #293d44',
+    },
+
     '&:nth-child(n + 18) td:first-child': {
       background: '#C13C2D;',
     },
@@ -107,11 +116,43 @@ const useStyle = makeStyles({
   laLigaContainer: {
     background: 'rgba(0, 0, 0, 0.66)',
 
+    height: 'fit-content',
     padding: '17px',
     borderRadius: '10px',
 
-    '& div#table-container-inside table': {
-      borderCollapse: 'separate',
+    display: 'flex',
+    alignItems: 'center',
+    flexDirection: 'column',
+
+    '@media (max-width: 1110px)': {
+      flexFlow: 'row wrap',
+      justifyContent: 'center',
+    },
+
+    '& div.top-table': {
+      color: '#F4FCC8',
+
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'center',
+
+      '& h1': {
+        fontSize: '40px',
+        fontWeight: 'normal',
+      },
+
+      '& img': {
+        width: '160px',
+      },
+    },
+
+    '& div#table-container-inside': {
+      '& table': {
+        borderCollapse: 'separate',
+        borderSpacing: '5px',
+
+        marginBottom: 0,
+      },
     },
   },
 
@@ -184,10 +225,17 @@ export const Table: React.FC<TableProps> = ({ data, thead, idCompetition }) => {
 
   return (
     <Container
+      idCompetition={idCompetition}
       className={clsx('table-container', {
         [classes.laLigaContainer]: idCompetition === '2014',
       })}
     >
+      {idCompetition === '2014' && (
+        <div className="top-table">
+          <h1>CLASSIFICAÇÃO</h1>
+          <img src={laLigaLogo} alt="LaLiga Santander" />
+        </div>
+      )}
       <div id="table-container-inside">
         <table>
           {thead}

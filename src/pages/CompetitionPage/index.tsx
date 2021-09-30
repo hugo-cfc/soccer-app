@@ -8,6 +8,7 @@ import PremierThead from '../../components/Table/components/PremierThead';
 import BrasileirãoHeader from '../../components/Headers/BrasileirãoHeader';
 import BrasileiraoThead from '../../components/Table/components/BrasileiraoThead';
 import LaLigaHeader from '../../components/Headers/LaLigaHeader';
+import LaLigaThead from '../../components/Table/components/LaLigaThead';
 import Table from '../../components/Table';
 import TableMatches from '../../components/TableMatches';
 
@@ -67,7 +68,7 @@ export const CompetitionPage: React.FC = () => {
             {
               '2013': <BrasileiraoThead />,
               '2021': <PremierThead />,
-              '2014': <PremierThead />,
+              '2014': <LaLigaThead />,
             }[id]
           }
           data={standings}
