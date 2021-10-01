@@ -49,7 +49,7 @@ export const Container = styled.main`
     justify-content: flex-end;
 
     @media (max-width: 900px) {
-      width: 80vw;
+      width: 90vw;
       height: auto;
 
       justify-content: center;
@@ -193,6 +193,10 @@ export const CompetitionsContainer = styled.section`
     img {
       width: 9vw;
       max-width: 160px;
+
+      &[alt='Ligue 1'] {
+        width: 6vw;
+      }
     }
 
     div.leagues-container {
@@ -207,7 +211,7 @@ export const CompetitionsContainer = styled.section`
   }
 
   @media (max-width: 900px) {
-    width: 80vw;
+    width: 95vw;
     height: auto;
     margin-bottom: 30px;
 
@@ -227,8 +231,12 @@ export const CompetitionsContainer = styled.section`
       }
 
       img {
-        width: 14vw;
+        width: 23vw;
         max-width: 160px;
+
+        &[alt='Ligue 1'] {
+          width: 15vw;
+        }
       }
 
       div.leagues-container {

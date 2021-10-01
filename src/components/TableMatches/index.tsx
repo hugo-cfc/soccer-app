@@ -8,10 +8,15 @@ import MatchData from '../../utils/MatchDataInterface';
 
 import PremierMatchesHeader from './Components/Headers/PremierMatchesHeader';
 import PremierContentMatch from './Components/MatchContents/PremierContentMatch';
+
 import BrasileiraoMatchesHeader from './Components/Headers/BrasileiraoMatchesHeader';
 import BrasileiraoContentMatch from './Components/MatchContents/BrasileiraoContentMatch';
+
 import LaLigaMatchesHeader from './Components/Headers/LaLigaMatchesHeader';
 import LaLigaContentMatch from './Components/MatchContents/LaLigaContentMatch';
+
+import Ligue1MatchesHeader from './Components/Headers/Ligue1MatchesHeader';
+import Ligue1ContentMatch from './Components/MatchContents/Ligue1ContentMatch';
 
 import { MatchsContainer } from './style';
 
@@ -44,6 +49,37 @@ const useStyle = makeStyles({
 
         '&:hover path': {
           color: shade(0.2, '#fff'),
+        },
+      },
+    },
+  },
+
+  ligue1: {
+    background: '#091C3E',
+    border: '1px solid #D0FB0C',
+
+    '& div#sub-header': {
+      backgroundColor: '#D0FB0C',
+      color: '#091C3E',
+
+      fontSize: '30px',
+
+      display: 'flex',
+      justifyContent: 'space-between',
+
+      padding: '14px 10px',
+
+      '& div#current-match-container': {
+        paddingTop: '10px',
+
+        fontFamily: "'Ligue 1 V1 Medium', sans-serif",
+      },
+
+      '& button': {
+        color: '#091C3E',
+
+        '&:hover path': {
+          color: shade(0.2, '#091C3E'),
         },
       },
     },
@@ -113,17 +149,19 @@ export const TableMatches: React.FC<TableMatchesProps> = ({
   return (
     <MatchsContainer
       className={clsx({
-        [classes.laLiga]: idCompetition === '2014',
-        [classes.premierLeague]: idCompetition === '2021',
         [classes.brasileirao]: idCompetition === '2013',
+        [classes.laLiga]: idCompetition === '2014',
+        [classes.ligue1]: idCompetition === '2015',
+        [classes.premierLeague]: idCompetition === '2021',
       })}
     >
       <div id="headers-wrapper">
         {
           {
             '2013': <BrasileiraoMatchesHeader />,
-            '2021': <PremierMatchesHeader />,
             '2014': <LaLigaMatchesHeader />,
+            '2015': <Ligue1MatchesHeader />,
+            '2021': <PremierMatchesHeader />,
           }[idCompetition]
         }
 
@@ -131,7 +169,7 @@ export const TableMatches: React.FC<TableMatchesProps> = ({
           <button type="button" onClick={() => onClickBack()}>
             <IoIosArrowBack />
           </button>
-          <div>RODADA {currentMatchday}</div>
+          <div id="current-match-container">RODADA {currentMatchday}</div>
           <button type="button" onClick={() => onClickNext()}>
             <IoIosArrowBack />
           </button>
@@ -151,8 +189,8 @@ export const TableMatches: React.FC<TableMatchesProps> = ({
           <div key={match.id}>
             {
               {
-                '2021': (
-                  <PremierContentMatch
+                '2013': (
+                  <BrasileiraoContentMatch
                     matchesData={match}
                     teamHomeLogo={teamHomeLogo}
                     teamAwayLogo={teamAwayLogo}
@@ -165,8 +203,15 @@ export const TableMatches: React.FC<TableMatchesProps> = ({
                     teamAwayLogo={teamAwayLogo}
                   />
                 ),
-                '2013': (
-                  <BrasileiraoContentMatch
+                '2015': (
+                  <Ligue1ContentMatch
+                    matchesData={match}
+                    teamHomeLogo={teamHomeLogo}
+                    teamAwayLogo={teamAwayLogo}
+                  />
+                ),
+                '2021': (
+                  <PremierContentMatch
                     matchesData={match}
                     teamHomeLogo={teamHomeLogo}
                     teamAwayLogo={teamAwayLogo}

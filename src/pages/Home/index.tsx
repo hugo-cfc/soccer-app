@@ -9,7 +9,7 @@ import { BiWorld } from 'react-icons/bi';
 
 import laLigaLogo from '../../assets/images/competitionsLogo/laligaLogo.svg';
 import premierLogo from '../../assets/images/competitionsLogo/premierLogoPurpleWhite.svg';
-import ligue1Logo from '../../assets/images/competitionsLogo/ligue1Logo.png';
+import ligue1Logo from '../../assets/images/competitionsLogo/ligue1LogoHome.svg';
 import bundesligaLogo from '../../assets/images/competitionsLogo/bundesligaLogo.svg';
 import serieALogo from '../../assets/images/competitionsLogo/serieALogo.svg';
 import brasileiraoLogo from '../../assets/images/competitionsLogo/logoBrasileirao.png';
@@ -94,7 +94,9 @@ export const Home: React.FC = () => {
             <NavLink to="/competition/2021">
               <img src={premierLogo} alt="Premier League" />
             </NavLink>
-            <img src={ligue1Logo} alt="Ligue 1" />
+            <NavLink to="/competition/2015">
+              <img src={ligue1Logo} alt="Ligue 1" />
+            </NavLink>
             <img src={bundesligaLogo} alt="Bundesliga" />
             <img src={serieALogo} alt="Serie A TIM" />
           </div>

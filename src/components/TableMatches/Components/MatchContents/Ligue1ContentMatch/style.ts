@@ -6,25 +6,29 @@ export const Container = styled.div`
   width: inherit;
 
   div.match-header {
-    background: #00ff7f;
-    color: #37043c;
+    display: flex;
+    justify-content: center;
 
-    padding: 0;
+    & > span {
+      background: #fff;
+      border: 1px solid #d0fb0c;
 
-    font-size: 15px;
-    font-weight: 600;
-    text-align: center;
+      color: #091c3d;
 
-    position: relative;
+      padding: 5px 10px;
+
+      font-family: 'Ligue 1 V1 Bold', sans-serif;
+      font-size: 15px;
+      font-weight: 600;
+      text-align: center;
+    }
   }
 
   div.match-content {
     display: flex;
     justify-content: space-between;
 
-    height: 50px;
-
-    background: #fff;
+    height: 75px;
 
     div.emblem-container {
       display: flex;
@@ -48,25 +52,23 @@ export const Container = styled.div`
       justify-content: space-around;
       align-items: center;
 
-      width: inherit;
-
       padding: 0.533vw;
 
-      background-color: #37043c;
       color: #fff;
 
       font-size: 22px;
+      font-family: 'Ligue 1 V1 Bold', sans-serif;
       text-transform: uppercase;
-
-      -webkit-box-shadow: 0px -1px 18px 4px rgba(50, 50, 50, 0.82);
-      -moz-box-shadow: 0px -1px 18px 4px rgba(50, 50, 50, 0.82);
-      box-shadow: 0px -1px 18px 4px rgba(50, 50, 50, 0.82);
 
       span {
         min-width: 55px;
 
         display: flex;
         justify-content: center;
+
+        &.score-number {
+          color: #d0fb0c;
+        }
       }
     }
   }

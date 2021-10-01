@@ -5,6 +5,8 @@ export const Container = styled.thead`
     background: rgba(12, 27, 35, 0.66);
     color: #f4fcc8;
 
+    font-family: 'Core Sans C 25';
+
     font-size: 27px;
     text-transform: uppercase;
 

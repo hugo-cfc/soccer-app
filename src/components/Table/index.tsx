@@ -78,7 +78,7 @@ const useStyle = makeStyles({
     fontSize: '24px',
     whiteSpace: 'nowrap',
 
-    fontFamily: 'Core Sans C 25, sans-serif',
+    fontFamily: "'Core Sans C 25', sans-serif",
 
     '& td': {
       padding: '0px 17px !important',
@@ -139,6 +139,7 @@ const useStyle = makeStyles({
       '& h1': {
         fontSize: '40px',
         fontWeight: 'normal',
+        fontFamily: "'Core Sans C 25', sans-serif",
       },
 
       '& img': {
@@ -218,6 +219,88 @@ const useStyle = makeStyles({
       },
     },
   },
+
+  ligue1: {
+    background: 'rgba(9, 28, 62, 0.89)',
+
+    fontSize: '24px',
+    fontFamily: "'Ligue 1 V1 Light', sans-serif",
+    fontWeight: 300,
+    color: '#fff',
+
+    '& td': {
+      '&:first-child': {
+        fontFamily: "'Ligue 1 V1 Bold', sans-serif",
+      },
+
+      '&:nth-child(3)': {
+        color: '#D0FB0C',
+      },
+    },
+
+    '&:nth-child(-n + 6)': {
+      '& td:nth-child(2)': {
+        fontFamily: "'Ligue 1 V1 Medium', sans-serif",
+      },
+    },
+
+    '&:nth-child(-n + 2)': {
+      '& td:nth-child(-n + 2)': {
+        color: '#D0FB0C',
+      },
+    },
+
+    '&:nth-child(3)': {
+      borderBottom: '1px solid #D0FB0C',
+      '& td:nth-child(-n + 2)': {
+        color: '#07C26B',
+      },
+    },
+
+    '&:nth-child(5)': {
+      borderBottom: '1px solid #D0FB0C',
+    },
+
+    '&:nth-child(n + 4):nth-child(-n+5)': {
+      '& td:nth-child(-n + 2)': {
+        color: '#00F1FF',
+      },
+    },
+
+    '&:nth-child(6)': {
+      borderBottom: '1px solid #D0FB0C',
+      '& td:nth-child(-n + 2)': {
+        color: '#AC965A',
+      },
+    },
+
+    '&:nth-child(18)': {
+      borderTop: '1px solid #D0FB0C',
+
+      '& td:nth-child(-n + 2)': {
+        color: '#F08712',
+      },
+    },
+
+    '&:nth-child(+n + 19)': {
+      '& td:nth-child(-n + 2)': {
+        color: '#C13C2D',
+      },
+    },
+  },
+
+  ligue1Container: {
+    height: 'fit-content',
+
+    '& div#table-container-inside': {
+      border: '1px solid #D0FB0C',
+
+      '& table': {
+        marginBottom: 0,
+        whiteSpace: 'nowrap',
+      },
+    },
+  },
 });
 
 export const Table: React.FC<TableProps> = ({ data, thead, idCompetition }) => {
@@ -228,6 +311,7 @@ export const Table: React.FC<TableProps> = ({ data, thead, idCompetition }) => {
       idCompetition={idCompetition}
       className={clsx('table-container', {
         [classes.laLigaContainer]: idCompetition === '2014',
+        [classes.ligue1Container]: idCompetition === '2015',
       })}
     >
       {idCompetition === '2014' && (
@@ -236,6 +320,7 @@ export const Table: React.FC<TableProps> = ({ data, thead, idCompetition }) => {
           <img src={laLigaLogo} alt="LaLiga Santander" />
         </div>
       )}
+
       <div id="table-container-inside">
         <table>
           {thead}
@@ -244,9 +329,10 @@ export const Table: React.FC<TableProps> = ({ data, thead, idCompetition }) => {
               <tr
                 key={team.team.id}
                 className={clsx({
-                  [classes.laLiga]: idCompetition === '2014',
-                  [classes.premierLeague]: idCompetition === '2021',
                   [classes.brasileirao]: idCompetition === '2013',
+                  [classes.laLiga]: idCompetition === '2014',
+                  [classes.ligue1]: idCompetition === '2015',
+                  [classes.premierLeague]: idCompetition === '2021',
                 })}
               >
                 <td className="positionCell">

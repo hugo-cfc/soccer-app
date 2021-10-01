@@ -3,12 +3,19 @@ import { useParams } from 'react-router-dom';
 import api from '../../services/api';
 
 import HomeButton from '../../components/HomeButton';
+
 import PremierHeader from '../../components/Headers/PremierHeader';
 import PremierThead from '../../components/Table/components/PremierThead';
+
 import BrasileirãoHeader from '../../components/Headers/BrasileirãoHeader';
 import BrasileiraoThead from '../../components/Table/components/BrasileiraoThead';
+
 import LaLigaHeader from '../../components/Headers/LaLigaHeader';
 import LaLigaThead from '../../components/Table/components/LaLigaThead';
+
+import Ligue1Header from '../../components/Headers/Ligue1Header';
+import Ligue1Thead from '../../components/Table/components/Ligue1Thead';
+
 import Table from '../../components/Table';
 import TableMatches from '../../components/TableMatches';
 
@@ -57,8 +64,9 @@ export const CompetitionPage: React.FC = () => {
       {
         {
           '2013': <BrasileirãoHeader />,
-          '2021': <PremierHeader />,
           '2014': <LaLigaHeader />,
+          '2015': <Ligue1Header />,
+          '2021': <PremierHeader />,
         }[id]
       }
 
@@ -67,8 +75,9 @@ export const CompetitionPage: React.FC = () => {
           thead={
             {
               '2013': <BrasileiraoThead />,
-              '2021': <PremierThead />,
               '2014': <LaLigaThead />,
+              '2015': <Ligue1Thead />,
+              '2021': <PremierThead />,
             }[id]
           }
           data={standings}
