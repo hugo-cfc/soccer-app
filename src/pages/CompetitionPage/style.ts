@@ -4,6 +4,7 @@ import BackgroundPremierImg from '../../assets/images/backgrounds/backPremier.pn
 import BackgroundBrasileiroImg from '../../assets/images/backgrounds/backBrasileiro.jpg';
 import BackgroundLaLigaImg from '../../assets/images/backgrounds/backLaLiga.jpg';
 import BackgroundLigue1Img from '../../assets/images/backgrounds/backLigue1.jpg';
+import BackgroundBundesliga from '../../assets/images/backgrounds/bundesligaBack.png';
 
 interface backgroundSelectorProps {
   [competitionId: string]: string;
@@ -14,6 +15,7 @@ interface ContainerProps {
 }
 
 const backgrounds: backgroundSelectorProps = {
+  '2002': `url(${BackgroundBundesliga})`,
   '2013': `url(${BackgroundBrasileiroImg})`,
   '2014': `url(${BackgroundLaLigaImg})`,
   '2015': `url(${BackgroundLigue1Img})`,
@@ -39,6 +41,26 @@ export const Container = styled.div<ContainerProps>`
   ${({ idCompetition }) =>
     idCompetition === '2014' &&
     css`
+      main {
+        header {
+          padding: 10px 0;
+
+          margin-bottom: 50px;
+
+          background: #000;
+          border-bottom: 4px solid #293d44;
+          color: #fff;
+
+          display: flex;
+          align-items: center;
+          justify-content: center;
+
+          img {
+            width: 263px;
+          }
+        }
+      }
+
       @media (max-width: 1570px) {
         main {
           flex-direction: column;

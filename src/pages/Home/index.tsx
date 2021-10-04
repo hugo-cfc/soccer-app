@@ -13,6 +13,7 @@ import ligue1Logo from '../../assets/images/competitionsLogo/ligue1LogoHome.svg'
 import bundesligaLogo from '../../assets/images/competitionsLogo/bundesligaLogo.svg';
 import serieALogo from '../../assets/images/competitionsLogo/serieALogo.svg';
 import brasileiraoLogo from '../../assets/images/competitionsLogo/logoBrasileirao.png';
+import ballImage from '../../assets/images/ball.png';
 
 import {
   Container,
@@ -26,7 +27,11 @@ export const Home: React.FC = () => {
     <Container>
       <section className="infos">
         <InfoProject>
-          <h1>Soccer App</h1>
+          <div id="title-container">
+            <img src={ballImage} alt="Soccer App" />
+
+            <h1>Soccer App</h1>
+          </div>
 
           <p>
             Projeito feito por Hugo Cesar para pôr em prática todos os
@@ -97,7 +102,9 @@ export const Home: React.FC = () => {
             <NavLink to="/competition/2015">
               <img src={ligue1Logo} alt="Ligue 1" />
             </NavLink>
-            <img src={bundesligaLogo} alt="Bundesliga" />
+            <NavLink to="/competition/2002">
+              <img src={bundesligaLogo} alt="Bundesliga" />
+            </NavLink>
             <img src={serieALogo} alt="Serie A TIM" />
           </div>
         </fieldset>

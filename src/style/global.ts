@@ -30,7 +30,7 @@ export default createGlobalStyle`
     font-family: 'Ligue 1 V1 Light';
     font-style: normal;
     font-weight: 300;
-    src: local('LigueV-Light'), url('/fonts/LigueV-Light.woff') format('woff');
+    src: local('liguev-light'), url('/fonts/liguev-light.woff') format('woff');
   }
 
   @font-face {

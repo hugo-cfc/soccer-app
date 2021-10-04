@@ -1,12 +1,9 @@
 import DataMatchRegex from '../../../../../utils/DataMatchRegex';
 import MatchData from '../../../../../utils/MatchDataInterface';
 
-import Ligue1Logo from '../../../../../assets/images/competitionsLogo/ligue1LogoWrd.svg';
-import emblemNull from '../../../../../assets/images/emblemNull.png';
-
 import { Container } from './style';
 
-interface Ligue1ContentMatchProps {
+interface BundesligaContentMatchProps {
   matchesData: MatchData;
   teamHomeLogo: Array<{
     team: {
@@ -20,7 +17,7 @@ interface Ligue1ContentMatchProps {
   }>;
 }
 
-export const Ligue1ContentMatch: React.FC<Ligue1ContentMatchProps> = ({
+export const BundesligaContentMatch: React.FC<BundesligaContentMatchProps> = ({
   matchesData,
   teamHomeLogo,
   teamAwayLogo,
@@ -47,9 +44,7 @@ export const Ligue1ContentMatch: React.FC<Ligue1ContentMatchProps> = ({
           <span className="score-number">
             {matchesData.score.fullTime.homeTeam}
           </span>
-          <span>
-            <img src={Ligue1Logo} alt="X" />
-          </span>
+          <span>X</span>
           <span className="score-number">
             {matchesData.score.fullTime.awayTeam}
           </span>
@@ -70,4 +65,4 @@ export const Ligue1ContentMatch: React.FC<Ligue1ContentMatchProps> = ({
   );
 };
 
-export default Ligue1ContentMatch;
+export default BundesligaContentMatch;

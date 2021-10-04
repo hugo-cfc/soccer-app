@@ -18,6 +18,9 @@ import LaLigaContentMatch from './Components/MatchContents/LaLigaContentMatch';
 import Ligue1MatchesHeader from './Components/Headers/Ligue1MatchesHeader';
 import Ligue1ContentMatch from './Components/MatchContents/Ligue1ContentMatch';
 
+import BundesligaMatchesHeader from './Components/Headers/BundesligaMatchesHeader';
+import BundesligaContentMatch from './Components/MatchContents/BundesligaContentMatch';
+
 import { MatchsContainer } from './style';
 
 interface TableMatchesProps {
@@ -134,6 +137,34 @@ const useStyle = makeStyles({
       },
     },
   },
+
+  bundesliga: {
+    background: 'rgba(0, 0, 0, 0.6)',
+
+    '& div#sub-header': {
+      background: '#C90E17',
+      color: '#fff',
+
+      fontSize: '30px',
+
+      display: 'flex',
+      justifyContent: 'space-between',
+
+      padding: '14px 10px',
+
+      '& div#current-match-container': {
+        fontFamily: "'Rajdhani', sans-serif",
+      },
+
+      '& button': {
+        color: '#fff',
+
+        '&:hover path': {
+          color: shade(0.2, '#fff'),
+        },
+      },
+    },
+  },
 });
 
 export const TableMatches: React.FC<TableMatchesProps> = ({
@@ -149,6 +180,7 @@ export const TableMatches: React.FC<TableMatchesProps> = ({
   return (
     <MatchsContainer
       className={clsx({
+        [classes.bundesliga]: idCompetition === '2002',
         [classes.brasileirao]: idCompetition === '2013',
         [classes.laLiga]: idCompetition === '2014',
         [classes.ligue1]: idCompetition === '2015',
@@ -158,6 +190,7 @@ export const TableMatches: React.FC<TableMatchesProps> = ({
       <div id="headers-wrapper">
         {
           {
+            '2002': <BundesligaMatchesHeader />,
             '2013': <BrasileiraoMatchesHeader />,
             '2014': <LaLigaMatchesHeader />,
             '2015': <Ligue1MatchesHeader />,
@@ -189,6 +222,13 @@ export const TableMatches: React.FC<TableMatchesProps> = ({
           <div key={match.id}>
             {
               {
+                '2002': (
+                  <BundesligaContentMatch
+                    matchesData={match}
+                    teamHomeLogo={teamHomeLogo}
+                    teamAwayLogo={teamAwayLogo}
+                  />
+                ),
                 '2013': (
                   <BrasileiraoContentMatch
                     matchesData={match}

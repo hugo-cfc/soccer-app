@@ -14,6 +14,18 @@ const leftFromRightAnimation = keyframes`
   }
 `;
 
+const topFromBottomAnimation = keyframes`
+  0% {
+    top: -500px;
+    opacity: 0.5;
+  }
+
+  100% {
+    top: 0px;
+    opacity: 1;
+  }
+`;
+
 export const Container = styled.main`
   min-height: 100vh;
 
@@ -63,9 +75,26 @@ export const InfoProject = styled.div`
   animation-name: ${leftFromRightAnimation};
   animation-duration: 5s;
 
-  h1 {
-    font-size: 5.11vw;
-    font-weight: 400;
+  div#title-container {
+    display: flex;
+
+    align-items: center;
+
+    margin-bottom: 10px;
+
+    img {
+      background: white;
+      border-radius: 50%;
+
+      width: 6vw;
+      height: 6vw;
+      margin-right: 10px;
+    }
+
+    h1 {
+      font-size: 5.11vw;
+      font-weight: 400;
+    }
   }
 
   p {
@@ -73,9 +102,18 @@ export const InfoProject = styled.div`
   }
 
   @media (max-width: 900px) {
-    h1 {
-      font-size: 10vw;
-      font-weight: 400;
+    div#title-container {
+      margin-top: 20px;
+
+      h1 {
+        font-size: 10vw;
+        font-weight: 400;
+      }
+
+      img {
+        width: 10vw;
+        height: 10vw;
+      }
     }
 
     p {
@@ -157,6 +195,10 @@ export const CompetitionsContainer = styled.section`
 
   background: rgba(0, 0, 0, 0.44);
   border: 3px solid #ffffff;
+
+  position: relative;
+  animation: ${topFromBottomAnimation};
+  animation-duration: 1.5s;
 
   h1 {
     font-size: 36px;

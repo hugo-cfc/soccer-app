@@ -6,15 +6,23 @@ import HomeButton from '../../components/HomeButton';
 
 import PremierHeader from '../../components/Headers/PremierHeader';
 import PremierThead from '../../components/Table/components/PremierThead';
+import PremierLogo from '../../assets/images/competitionsLogo/premierLogoPurple.svg';
 
 import BrasileirãoHeader from '../../components/Headers/BrasileirãoHeader';
 import BrasileiraoThead from '../../components/Table/components/BrasileiraoThead';
+import BrasileiraoLogo from '../../assets/images/competitionsLogo/logoBrasileirao.png';
 
 import LaLigaHeader from '../../components/Headers/LaLigaHeader';
 import LaLigaThead from '../../components/Table/components/LaLigaThead';
+import LaLigaLogo from '../../assets/images/competitionsLogo/laLigaLogoHeaderYellow.svg';
 
 import Ligue1Header from '../../components/Headers/Ligue1Header';
 import Ligue1Thead from '../../components/Table/components/Ligue1Thead';
+import Ligue1Logo from '../../assets/images/competitionsLogo/ligue1Logo.svg';
+
+import BundesligaHeader from '../../components/Headers/BundesligaHeader';
+import BundesligaThead from '../../components/Table/components/BundesligaThead';
+import BundesligaLogo from '../../assets/images/competitionsLogo/bundesligaLogo.svg';
 
 import Table from '../../components/Table';
 import TableMatches from '../../components/TableMatches';
@@ -63,6 +71,7 @@ export const CompetitionPage: React.FC = () => {
     <Container idCompetition={id}>
       {
         {
+          '2002': <BundesligaHeader />,
           '2013': <BrasileirãoHeader />,
           '2014': <LaLigaHeader />,
           '2015': <Ligue1Header />,
@@ -70,10 +79,26 @@ export const CompetitionPage: React.FC = () => {
         }[id]
       }
 
+      <header>
+        <img
+          src={
+            {
+              '2002': BundesligaLogo,
+              '2013': BrasileiraoLogo,
+              '2014': LaLigaLogo,
+              '2015': Ligue1Logo,
+              '2021': PremierLogo,
+            }[id]
+          }
+          alt=""
+        />
+      </header>
+
       <main>
         <Table
           thead={
             {
+              '2002': <BundesligaThead />,
               '2013': <BrasileiraoThead />,
               '2014': <LaLigaThead />,
               '2015': <Ligue1Thead />,
