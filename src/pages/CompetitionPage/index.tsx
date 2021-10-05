@@ -4,23 +4,18 @@ import api from '../../services/api';
 
 import HomeButton from '../../components/HomeButton';
 
-import PremierHeader from '../../components/Headers/PremierHeader';
 import PremierThead from '../../components/Table/components/PremierThead';
 import PremierLogo from '../../assets/images/competitionsLogo/premierLogoPurple.svg';
 
-import BrasileirãoHeader from '../../components/Headers/BrasileirãoHeader';
 import BrasileiraoThead from '../../components/Table/components/BrasileiraoThead';
 import BrasileiraoLogo from '../../assets/images/competitionsLogo/logoBrasileirao.png';
 
-import LaLigaHeader from '../../components/Headers/LaLigaHeader';
 import LaLigaThead from '../../components/Table/components/LaLigaThead';
 import LaLigaLogo from '../../assets/images/competitionsLogo/laLigaLogoHeaderYellow.svg';
 
-import Ligue1Header from '../../components/Headers/Ligue1Header';
 import Ligue1Thead from '../../components/Table/components/Ligue1Thead';
 import Ligue1Logo from '../../assets/images/competitionsLogo/ligue1Logo.svg';
 
-import BundesligaHeader from '../../components/Headers/BundesligaHeader';
 import BundesligaThead from '../../components/Table/components/BundesligaThead';
 import BundesligaLogo from '../../assets/images/competitionsLogo/bundesligaLogo.svg';
 
@@ -69,16 +64,6 @@ export const CompetitionPage: React.FC = () => {
 
   return (
     <Container idCompetition={id}>
-      {
-        {
-          '2002': <BundesligaHeader />,
-          '2013': <BrasileirãoHeader />,
-          '2014': <LaLigaHeader />,
-          '2015': <Ligue1Header />,
-          '2021': <PremierHeader />,
-        }[id]
-      }
-
       <header>
         <img
           src={
@@ -90,8 +75,18 @@ export const CompetitionPage: React.FC = () => {
               '2021': PremierLogo,
             }[id]
           }
-          alt=""
+          alt={
+            {
+              '2002': 'Bundesliga',
+              '2013': 'Brasileirao',
+              '2014': 'La Liga',
+              '2015': 'Ligue 1',
+              '2021': 'Premier League',
+            }[id]
+          }
         />
+
+        {id === '2013' && <h1>Brasileirão - 2021</h1>}
       </header>
 
       <main>

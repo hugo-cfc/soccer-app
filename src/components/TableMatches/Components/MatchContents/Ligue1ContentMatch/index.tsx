@@ -2,8 +2,6 @@ import DataMatchRegex from '../../../../../utils/DataMatchRegex';
 import MatchData from '../../../../../utils/MatchDataInterface';
 
 import Ligue1Logo from '../../../../../assets/images/competitionsLogo/ligue1LogoWrd.svg';
-import emblemNull from '../../../../../assets/images/emblemNull.png';
-
 import { Container } from './style';
 
 interface Ligue1ContentMatchProps {

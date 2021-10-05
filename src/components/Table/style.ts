@@ -29,8 +29,6 @@ export const Container = styled.div<ContainerProps>`
   table {
     border-collapse: collapse;
 
-    margin-bottom: 50px;
-
     ${({ idCompetition }) =>
       idCompetition === '2014' &&
       css`
