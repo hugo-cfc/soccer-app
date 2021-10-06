@@ -1,23 +1,9 @@
 import DataMatchRegex from '../../../../../utils/DataMatchRegex';
-import MatchData from '../../../../../utils/MatchDataInterface';
+import ContentMatchData from '../../../../../utils/ContentMatchInterface';
 
 import { Container } from './style';
 
-interface BundesligaContentMatchProps {
-  matchesData: MatchData;
-  teamHomeLogo: Array<{
-    team: {
-      crestUrl: string;
-    };
-  }>;
-  teamAwayLogo: Array<{
-    team: {
-      crestUrl: string;
-    };
-  }>;
-}
-
-export const BundesligaContentMatch: React.FC<BundesligaContentMatchProps> = ({
+export const BundesligaContentMatch: React.FC<ContentMatchData> = ({
   matchesData,
   teamHomeLogo,
   teamAwayLogo,

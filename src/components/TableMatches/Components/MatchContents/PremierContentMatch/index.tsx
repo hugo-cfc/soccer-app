@@ -1,23 +1,9 @@
 import DataMatchRegex from '../../../../../utils/DataMatchRegex';
-import MatchData from '../../../../../utils/MatchDataInterface';
+import ContentMatchData from '../../../../../utils/ContentMatchInterface';
 
 import { Container } from './style';
 
-interface PremierContentMatchProps {
-  matchesData: MatchData;
-  teamHomeLogo: Array<{
-    team: {
-      crestUrl: string;
-    };
-  }>;
-  teamAwayLogo: Array<{
-    team: {
-      crestUrl: string;
-    };
-  }>;
-}
-
-export const PremierContentMatch: React.FC<PremierContentMatchProps> = ({
+export const PremierContentMatch: React.FC<ContentMatchData> = ({
   matchesData,
   teamHomeLogo,
   teamAwayLogo,

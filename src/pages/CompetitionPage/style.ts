@@ -1,4 +1,4 @@
-import styled, { css } from 'styled-components';
+import styled, { css, keyframes } from 'styled-components';
 
 import BackgroundPremierImg from '../../assets/images/backgrounds/backPremier.png';
 import BackgroundBrasileiroImg from '../../assets/images/backgrounds/backBrasileiro.jpg';
@@ -22,8 +22,14 @@ const backgrounds: backgroundSelectorProps = {
   '2021': `url(${BackgroundPremierImg})`,
 };
 
+const loading = keyframes`
+  0% { -webkit-transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(360deg); }
+`;
+
 export const Container = styled.div<ContainerProps>`
   min-height: 100vh;
+  padding-bottom: 30px;
 
   background-image: ${props => backgrounds[props.idCompetition]};
 
@@ -33,17 +39,17 @@ export const Container = styled.div<ContainerProps>`
   background-position: center;
   background-size: cover;
 
-  main {
-    display: flex;
-    justify-content: space-around;
-  }
-
   & > header {
     display: flex;
     justify-content: center;
     align-items: center;
 
     margin-bottom: 50px;
+  }
+
+  main {
+    display: flex;
+    justify-content: space-around;
   }
 
   ${({ idCompetition }) =>
@@ -99,7 +105,6 @@ export const Container = styled.div<ContainerProps>`
 
         background: #000;
         border-bottom: 4px solid #293d44;
-        color: #fff;
 
         img {
           width: 263px;
@@ -115,7 +120,6 @@ export const Container = styled.div<ContainerProps>`
 
         background: #091c3e;
         border-bottom: 3px solid #d0fb0c;
-        color: #fff;
 
         img {
           width: 230px;
@@ -135,7 +139,6 @@ export const Container = styled.div<ContainerProps>`
           #e90959 52.6%,
           #fd005b 100%
         );
-        color: #fff;
 
         img {
           width: 146px;
@@ -161,5 +164,39 @@ export const Container = styled.div<ContainerProps>`
       justify-content: center;
       align-items: center;
     }
+  }
+`;
+
+export const LoadingContainer = styled.div<ContainerProps>`
+  background-color: #001959;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
+  background-size: cover;
+  background-image: ${props => backgrounds[props.idCompetition]};
+
+  height: 100vh;
+
+  .background {
+    width: 100vw;
+    height: 100vh;
+
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(7px);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .loader {
+    background: #fff;
+
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+
+    -webkit-animation: ${loading} 2s linear infinite;
+    animation: ${loading} 2s linear infinite;
   }
 `;

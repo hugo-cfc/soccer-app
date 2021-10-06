@@ -1,28 +1,21 @@
+/* eslint-disable prettier/prettier */
 import { useEffect, useState, useRef } from 'react';
 import { useParams } from 'react-router-dom';
 import api from '../../services/api';
 
 import HomeButton from '../../components/HomeButton';
 
-import PremierThead from '../../components/Table/components/PremierThead';
 import PremierLogo from '../../assets/images/competitionsLogo/premierLogoPurple.svg';
-
-import BrasileiraoThead from '../../components/Table/components/BrasileiraoThead';
 import BrasileiraoLogo from '../../assets/images/competitionsLogo/logoBrasileirao.png';
-
-import LaLigaThead from '../../components/Table/components/LaLigaThead';
 import LaLigaLogo from '../../assets/images/competitionsLogo/laLigaLogoHeaderYellow.svg';
-
-import Ligue1Thead from '../../components/Table/components/Ligue1Thead';
 import Ligue1Logo from '../../assets/images/competitionsLogo/ligue1Logo.svg';
-
-import BundesligaThead from '../../components/Table/components/BundesligaThead';
 import BundesligaLogo from '../../assets/images/competitionsLogo/bundesligaLogo.svg';
+import Ball from '../../assets/icons/ball.png';
 
 import Table from '../../components/Table';
 import TableMatches from '../../components/TableMatches';
 
-import { Container } from './style';
+import { Container, LoadingContainer } from './style';
 
 export const CompetitionPage: React.FC = () => {
   const [standings, setStandings] = useState([]);
@@ -36,12 +29,12 @@ export const CompetitionPage: React.FC = () => {
 
   useEffect(() => {
     (async () => {
-      const { data } = await api.get(urlCompetitions);
-      setCurrentMatchday(data.season.currentMatchday);
-      setStandings(data.standings[0].table);
+      const response = await api.get(urlCompetitions);
+      setCurrentMatchday(response.data.season.currentMatchday);
+      setStandings(response.data.standings[0].table);
 
       const dataMatches = await api.get(
-        `v2/competitions/${id}/matches?matchday=${data.season.currentMatchday}`,
+        `v2/competitions/${id}/matches?matchday=${response.data.season.currentMatchday}`,
       );
       setMatches(dataMatches.data.matches);
     })();
@@ -55,67 +48,65 @@ export const CompetitionPage: React.FC = () => {
         return;
       }
 
-      const dataMatches = await api.get(
+      const { data } = await api.get(
         `v2/competitions/${id}/matches?matchday=${currentMatchday}`,
       );
-      setMatches(dataMatches.data.matches);
+      setMatches(data.matches);
     })();
   }, [currentMatchday]);
 
   return (
-    <Container idCompetition={id}>
-      <header>
-        <img
-          src={
-            {
-              '2002': BundesligaLogo,
-              '2013': BrasileiraoLogo,
-              '2014': LaLigaLogo,
-              '2015': Ligue1Logo,
-              '2021': PremierLogo,
-            }[id]
-          }
-          alt={
-            {
-              '2002': 'Bundesliga',
-              '2013': 'Brasileirao',
-              '2014': 'La Liga',
-              '2015': 'Ligue 1',
-              '2021': 'Premier League',
-            }[id]
-          }
-        />
+    <>
+      {standings.length > 0 && matches.length > 0 ? (
+        <Container idCompetition={id}>
+          <header>
+            <img
+              src={
+                {
+                  '2002': BundesligaLogo,
+                  '2013': BrasileiraoLogo,
+                  '2014': LaLigaLogo,
+                  '2015': Ligue1Logo,
+                  '2021': PremierLogo,
+                }[id]
+              }
+              alt={
+                {
+                  '2002': 'Bundesliga',
+                  '2013': 'Brasileirao',
+                  '2014': 'La Liga',
+                  '2015': 'Ligue 1',
+                  '2021': 'Premier League',
+                }[id]
+              }
+            />
 
-        {id === '2013' && <h1>Brasileirão - 2021</h1>}
-      </header>
+            {id === '2013' && <h1>Brasileirão - 2021</h1>}
+          </header>
 
-      <main>
-        <Table
-          thead={
-            {
-              '2002': <BundesligaThead />,
-              '2013': <BrasileiraoThead />,
-              '2014': <LaLigaThead />,
-              '2015': <Ligue1Thead />,
-              '2021': <PremierThead />,
-            }[id]
-          }
-          data={standings}
-          idCompetition={id}
-        />
+          <main>
+            <Table data={standings} idCompetition={id} />
 
-        <TableMatches
-          data={matches}
-          dataStandings={standings}
-          currentMatchday={currentMatchday}
-          idCompetition={id}
-          onClickBack={() => setCurrentMatchday(prevState => prevState - 1)}
-          onClickNext={() => setCurrentMatchday(prevState => prevState + 1)}
-        />
+            <TableMatches
+              data={matches}
+              dataStandings={standings}
+              currentMatchday={currentMatchday}
+              idCompetition={id}
+              onClickBack={() => setCurrentMatchday(prevState => prevState - 1)}
+              onClickNext={() => setCurrentMatchday(prevState => prevState + 1)}
+            />
 
-        <HomeButton />
-      </main>
-    </Container>
+            <HomeButton />
+          </main>
+        </Container>
+      ) : (
+        <LoadingContainer idCompetition={id}>
+          <div className="background">
+            <img src={Ball} className="loader" alt="Soccer App" />
+          </div>
+        </LoadingContainer>
+      )}
+    </>
   );
 };
 

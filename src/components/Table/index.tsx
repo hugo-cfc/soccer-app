@@ -1,34 +1,17 @@
-import { ReactNode } from 'react';
-
-import clsx from 'clsx';
-
 import TeamData from '../../utils/TeamDataInterface';
 
 import laLigaLogo from '../../assets/images/competitionsLogo/laligaLogoBlue.svg';
 
 import { Container } from './style';
-import useStyle from './styleMaterial';
 
 interface TableProps {
   data: Array<TeamData>;
-  thead?: ReactNode;
   idCompetition: string;
 }
 
-export const Table: React.FC<TableProps> = ({ data, thead, idCompetition }) => {
-  const classes = useStyle();
-
+export const Table: React.FC<TableProps> = ({ data, idCompetition }) => {
   return (
-    <Container
-      idCompetition={idCompetition}
-      className={clsx('table-container', {
-        [classes.bundesligaContainer]: idCompetition === '2002',
-        [classes.brasileiraoContainer]: idCompetition === '2013',
-        [classes.laLigaContainer]: idCompetition === '2014',
-        [classes.ligue1Container]: idCompetition === '2015',
-        [classes.premierContainer]: idCompetition === '2021',
-      })}
-    >
+    <Container idCompetition={idCompetition} className="table-container">
       {idCompetition === '2002' && (
         <div className="top-table">
           <h1>CLASSIFICAÇÃO</h1>
@@ -44,19 +27,38 @@ export const Table: React.FC<TableProps> = ({ data, thead, idCompetition }) => {
 
       <div id="table-container-inside">
         <table>
-          {thead}
+          <thead>
+            <tr>
+              {idCompetition === '2002' && <th>P</th>}
+              <th
+                colSpan={idCompetition === '2002' ? 1 : 2}
+                className="classification-name"
+              >
+                {idCompetition === '2002' && 'TIME'}
+
+                {idCompetition === '2013' && (
+                  <>
+                    Classificação <b>2021</b>
+                  </>
+                )}
+
+                {idCompetition === '2015' && 'CLASSIFICAÇÃO'}
+
+                {idCompetition === '2021' && 'TIME'}
+              </th>
+              <th>P</th>
+              <th>J</th>
+              <th>V</th>
+              <th>E</th>
+              <th>D</th>
+              <th>SG</th>
+              <th>GP</th>
+              <th>GC</th>
+            </tr>
+          </thead>
           <tbody>
             {data.map((team: TeamData) => (
-              <tr
-                key={team.team.id}
-                className={clsx({
-                  [classes.bundesliga]: idCompetition === '2002',
-                  [classes.brasileirao]: idCompetition === '2013',
-                  [classes.laLiga]: idCompetition === '2014',
-                  [classes.ligue1]: idCompetition === '2015',
-                  [classes.premierLeague]: idCompetition === '2021',
-                })}
-              >
+              <tr key={team.team.id}>
                 <td className="positionCell">
                   <div className="positionContainer">{team.position}</div>
                 </td>

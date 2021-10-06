@@ -4,6 +4,7 @@ import {
   AiFillGithub,
   AiFillLinkedin,
   AiFillPhone,
+  AiOutlineWhatsApp,
 } from 'react-icons/ai';
 import { BiWorld } from 'react-icons/bi';
 
@@ -11,9 +12,9 @@ import laLigaLogo from '../../assets/images/competitionsLogo/laligaLogo.svg';
 import premierLogo from '../../assets/images/competitionsLogo/premierLogoPurpleWhite.svg';
 import ligue1Logo from '../../assets/images/competitionsLogo/ligue1LogoHome.svg';
 import bundesligaLogo from '../../assets/images/competitionsLogo/bundesligaLogo.svg';
-import serieALogo from '../../assets/images/competitionsLogo/serieALogo.svg';
+import serieALogo from '../../assets/images/competitionsLogo/serieALogo.png';
 import brasileiraoLogo from '../../assets/images/competitionsLogo/logoBrasileirao.png';
-import ballImage from '../../assets/images/ball.png';
+import ballImage from '../../assets/icons/ball.png';
 
 import {
   Container,
@@ -77,6 +78,7 @@ export const Home: React.FC = () => {
             <div className="contact-container">
               <a href="tel:82988046265">
                 <AiFillPhone />
+                <AiOutlineWhatsApp />
                 (82) 98804-6265
               </a>
             </div>

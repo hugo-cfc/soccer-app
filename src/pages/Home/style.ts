@@ -188,7 +188,6 @@ export const Contacts = styled.div`
 export const CompetitionsContainer = styled.section`
   width: 40.4vw;
   max-width: 710px;
-  height: fit-content;
   padding: 40px 20px;
 
   align-self: center;
@@ -236,8 +235,15 @@ export const CompetitionsContainer = styled.section`
       width: 9vw;
       max-width: 160px;
 
-      &[alt='Ligue 1'] {
+      transition: all 0.3s ease-in-out;
+
+      &[alt='Ligue 1'],
+      &[alt='Serie A TIM'] {
         width: 6vw;
+      }
+
+      &:hover {
+        transform: scale(1.2);
       }
     }
 
@@ -254,7 +260,6 @@ export const CompetitionsContainer = styled.section`
 
   @media (max-width: 900px) {
     width: 95vw;
-    height: auto;
     margin-bottom: 30px;
 
     h1 {
@@ -276,7 +281,8 @@ export const CompetitionsContainer = styled.section`
         width: 23vw;
         max-width: 160px;
 
-        &[alt='Ligue 1'] {
+        &[alt='Ligue 1'],
+        &[alt='Serie A TIM'] {
           width: 15vw;
         }
       }

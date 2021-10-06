@@ -1,23 +1,9 @@
 import DataMatchRegex from '../../../../../utils/DataMatchRegex';
-import MatchData from '../../../../../utils/MatchDataInterface';
+import ContentMatchData from '../../../../../utils/ContentMatchInterface';
 
 import { Container } from './style';
 
-interface LaLigaMatchProps {
-  matchesData: MatchData;
-  teamHomeLogo: Array<{
-    team: {
-      crestUrl: string;
-    };
-  }>;
-  teamAwayLogo: Array<{
-    team: {
-      crestUrl: string;
-    };
-  }>;
-}
-
-export const LaLigaMatch: React.FC<LaLigaMatchProps> = ({
+export const LaLigaMatch: React.FC<ContentMatchData> = ({
   matchesData,
   teamHomeLogo,
   teamAwayLogo,

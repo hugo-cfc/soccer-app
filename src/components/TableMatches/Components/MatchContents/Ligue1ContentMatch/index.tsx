@@ -1,24 +1,10 @@
 import DataMatchRegex from '../../../../../utils/DataMatchRegex';
-import MatchData from '../../../../../utils/MatchDataInterface';
+import ContentMatchData from '../../../../../utils/ContentMatchInterface';
 
 import Ligue1Logo from '../../../../../assets/images/competitionsLogo/ligue1LogoWrd.svg';
 import { Container } from './style';
 
-interface Ligue1ContentMatchProps {
-  matchesData: MatchData;
-  teamHomeLogo: Array<{
-    team: {
-      crestUrl: string;
-    };
-  }>;
-  teamAwayLogo: Array<{
-    team: {
-      crestUrl: string;
-    };
-  }>;
-}
-
-export const Ligue1ContentMatch: React.FC<Ligue1ContentMatchProps> = ({
+export const Ligue1ContentMatch: React.FC<ContentMatchData> = ({
   matchesData,
   teamHomeLogo,
   teamAwayLogo,
