@@ -4,6 +4,8 @@ import { useParams } from 'react-router-dom';
 import api from '../../services/api';
 
 import HomeButton from '../../components/HomeButton';
+import ModalWarnings from '../../components/ModalWarnings';
+import ModalLimitRequisitions from '../../components/ModalLimitRequisitions';
 
 import PremierLogo from '../../assets/images/competitionsLogo/premierLogoPurple.svg';
 import BrasileiraoLogo from '../../assets/images/competitionsLogo/logoBrasileirao.png';
@@ -21,6 +23,7 @@ export const CompetitionPage: React.FC = () => {
   const [standings, setStandings] = useState([]);
   const [matches, setMatches] = useState([]);
   const [currentMatchday, setCurrentMatchday] = useState<number>(1);
+  const [isExceededLimitRequests, setIsExceededLimitRequests] = useState(false);
 
   const { id } = useParams<{ id: string }>();
 
@@ -29,14 +32,22 @@ export const CompetitionPage: React.FC = () => {
 
   useEffect(() => {
     (async () => {
-      const response = await api.get(urlCompetitions);
-      setCurrentMatchday(response.data.season.currentMatchday);
-      setStandings(response.data.standings[0].table);
+      await api
+        .get(urlCompetitions)
+        .then(response => {
+          setCurrentMatchday(response.data.season.currentMatchday);
+          setStandings(response.data.standings[0].table);
+        })
+        .catch(() => {
+          setIsExceededLimitRequests(true);
+        });
 
-      const dataMatches = await api.get(
-        `v2/competitions/${id}/matches?matchday=${response.data.season.currentMatchday}`,
-      );
-      setMatches(dataMatches.data.matches);
+      await api
+        .get(`v2/competitions/${id}/matches?matchday=${currentMatchday}`)
+        .then(response => setMatches(response.data.matches))
+        .catch(() => {
+          setIsExceededLimitRequests(true);
+        });
     })();
   }, []);
 
@@ -48,10 +59,12 @@ export const CompetitionPage: React.FC = () => {
         return;
       }
 
-      const { data } = await api.get(
-        `v2/competitions/${id}/matches?matchday=${currentMatchday}`,
-      );
-      setMatches(data.matches);
+      await api
+        .get(`v2/competitions/${id}/matches?matchday=${currentMatchday}`)
+        .then(response => setMatches(response.data.matches))
+        .catch(() => {
+          setIsExceededLimitRequests(true);
+        });
     })();
   }, [currentMatchday]);
 
@@ -96,14 +109,20 @@ export const CompetitionPage: React.FC = () => {
               onClickNext={() => setCurrentMatchday(prevState => prevState + 1)}
             />
 
+            {isExceededLimitRequests && <ModalLimitRequisitions />}
             <HomeButton />
+            <ModalWarnings />
           </main>
         </Container>
       ) : (
         <LoadingContainer idCompetition={id}>
-          <div className="background">
-            <img src={Ball} className="loader" alt="Soccer App" />
-          </div>
+          {!isExceededLimitRequests ? (
+            <div className="background">
+              <img src={Ball} className="loader" alt="Soccer App" />
+            </div>
+          ) : (
+            <ModalLimitRequisitions />
+          )}
         </LoadingContainer>
       )}
     </>

@@ -1,4 +1,6 @@
+import { useCallback } from 'react';
 import { NavLink } from 'react-router-dom';
+import { isMobile } from 'react-device-detect';
 import {
   AiOutlineMail,
   AiFillGithub,
@@ -24,6 +26,12 @@ import {
 } from './style';
 
 export const Home: React.FC = () => {
+  const handleHoverCompetition = useCallback(() => {
+    if (isMobile) return;
+
+    new Audio('/hoverSound.mp3').play();
+  }, []);
+
   return (
     <Container>
       <section className="infos">
@@ -95,19 +103,33 @@ export const Home: React.FC = () => {
           </legend>
 
           <div className="leagues-container">
-            <NavLink to="/competition/2014">
+            <NavLink
+              to="/competition/2014"
+              onMouseOver={handleHoverCompetition}
+            >
               <img src={laLigaLogo} alt="La Liga" />
             </NavLink>
-            <NavLink to="/competition/2021">
+            <NavLink
+              to="/competition/2021"
+              onMouseOver={handleHoverCompetition}
+            >
               <img src={premierLogo} alt="Premier League" />
             </NavLink>
-            <NavLink to="/competition/2015">
+            <NavLink
+              to="/competition/2015"
+              onMouseOver={handleHoverCompetition}
+            >
               <img src={ligue1Logo} alt="Ligue 1" />
             </NavLink>
-            <NavLink to="/competition/2002">
+            <NavLink
+              to="/competition/2002"
+              onMouseOver={handleHoverCompetition}
+            >
               <img src={bundesligaLogo} alt="Bundesliga" />
             </NavLink>
-            <img src={serieALogo} alt="Serie A TIM" />
+            <NavLink to="/" onMouseOver={handleHoverCompetition}>
+              <img src={serieALogo} alt="Serie A TIM" />
+            </NavLink>
           </div>
         </fieldset>
 
@@ -117,7 +139,10 @@ export const Home: React.FC = () => {
           </legend>
 
           <div className="leagues-container">
-            <NavLink to="/competition/2013">
+            <NavLink
+              to="/competition/2013"
+              onMouseOver={handleHoverCompetition}
+            >
               <img src={brasileiraoLogo} alt="Brasileirão" />
             </NavLink>
           </div>
