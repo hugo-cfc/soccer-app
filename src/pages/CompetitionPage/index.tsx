@@ -1,11 +1,10 @@
-/* eslint-disable prettier/prettier */
 import { useEffect, useState, useRef } from 'react';
 import { useParams } from 'react-router-dom';
 import api from '../../services/api';
 
 import HomeButton from '../../components/HomeButton';
 import ModalWarnings from '../../components/ModalWarnings';
-import ModalLimitRequisitions from '../../components/ModalLimitRequisitions';
+import ModalErrorRequisition from '../../components/ModalErrorRequisition';
 
 import PremierLogo from '../../assets/images/competitionsLogo/premierLogoPurple.svg';
 import BrasileiraoLogo from '../../assets/images/competitionsLogo/logoBrasileirao.png';
@@ -23,14 +22,25 @@ export const CompetitionPage: React.FC = () => {
   const [standings, setStandings] = useState([]);
   const [matches, setMatches] = useState([]);
   const [currentMatchday, setCurrentMatchday] = useState<number>(1);
-  const [isExceededLimitRequests, setIsExceededLimitRequests] = useState(false);
+  const [isErrorRequest, setIsErrorRequest] = useState(false);
 
   const { id } = useParams<{ id: string }>();
 
   const urlCompetitions = `/v2/competitions/${id}/standings`;
   const firstRender = useRef(1);
+  const isValidId =
+    id === '2002' ||
+    id === '2013' ||
+    id === '2014' ||
+    id === '2015' ||
+    id === '2021';
 
   useEffect(() => {
+    if (!isValidId) {
+      setIsErrorRequest(true);
+      return;
+    }
+
     (async () => {
       await api
         .get(urlCompetitions)
@@ -39,14 +49,14 @@ export const CompetitionPage: React.FC = () => {
           setStandings(response.data.standings[0].table);
         })
         .catch(() => {
-          setIsExceededLimitRequests(true);
+          setIsErrorRequest(true);
         });
 
       await api
         .get(`v2/competitions/${id}/matches?matchday=${currentMatchday}`)
         .then(response => setMatches(response.data.matches))
         .catch(() => {
-          setIsExceededLimitRequests(true);
+          setIsErrorRequest(true);
         });
     })();
   }, []);
@@ -63,7 +73,7 @@ export const CompetitionPage: React.FC = () => {
         .get(`v2/competitions/${id}/matches?matchday=${currentMatchday}`)
         .then(response => setMatches(response.data.matches))
         .catch(() => {
-          setIsExceededLimitRequests(true);
+          setIsErrorRequest(true);
         });
     })();
   }, [currentMatchday]);
@@ -109,19 +119,19 @@ export const CompetitionPage: React.FC = () => {
               onClickNext={() => setCurrentMatchday(prevState => prevState + 1)}
             />
 
-            {isExceededLimitRequests && <ModalLimitRequisitions />}
+            {isErrorRequest && <ModalErrorRequisition isValidId={isValidId} />}
             <HomeButton />
             <ModalWarnings />
           </main>
         </Container>
       ) : (
         <LoadingContainer idCompetition={id}>
-          {!isExceededLimitRequests ? (
+          {!isErrorRequest ? (
             <div className="background">
               <img src={Ball} className="loader" alt="Soccer App" />
             </div>
           ) : (
-            <ModalLimitRequisitions />
+            <ModalErrorRequisition isValidId={isValidId} />
           )}
         </LoadingContainer>
       )}

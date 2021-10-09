@@ -14,7 +14,7 @@ export const Container = styled.div`
   position: fixed;
   top: 0;
 
-  div#requisition-limit-container {
+  div#requisition-error-container {
     background: rgba(0, 0, 0, 0.72);
     border: 3px solid #ffffff;
     color: #ffffff;
@@ -31,9 +31,11 @@ export const Container = styled.div`
       border: 3px solid #ffffff;
 
       margin-right: 40px;
+
+      max-width: 300px;
     }
 
-    div#requisition-limit-content {
+    div#requisition-error-content {
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -60,7 +62,7 @@ export const Container = styled.div`
   }
 
   @media (max-width: 900px) {
-    div#requisition-limit-container {
+    div#requisition-error-container {
       width: 700px;
 
       padding: 30px;
@@ -68,7 +70,7 @@ export const Container = styled.div`
   }
 
   @media (max-width: 730px) {
-    div#requisition-limit-container {
+    div#requisition-error-container {
       width: 400px;
 
       img {
@@ -76,7 +78,7 @@ export const Container = styled.div`
         height: 90px;
       }
 
-      div#requisition-limit-content {
+      div#requisition-error-content {
         h1 {
           margin-bottom: 40px;
 
