@@ -24,7 +24,7 @@ interface TableMatchesProps {
   onClickNext(): void;
   data: Array<MatchData>;
   dataStandings: Array<TeamData>;
-  currentMatchday: number;
+  currentMatchday: number | undefined;
   idCompetition: string;
 }
 

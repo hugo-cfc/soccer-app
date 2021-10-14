@@ -211,7 +211,7 @@ export const Container = styled.div<ContainerProps>`
           &:nth-child(-n + 4) {
             td {
               .positionContainer {
-                background-color: #38ff00;
+                background: #38ff00;
               }
             }
           }
@@ -244,13 +244,13 @@ export const Container = styled.div<ContainerProps>`
   ${({ idCompetition }) =>
     idCompetition === '2014' &&
     css`
-      background: rgba(0, 0, 0, 0.66);
+      background: ${({ theme }) => theme.laliga.backgrounds.primaryBackground};
 
       padding: 17px;
       border-radius: 10px;
 
       div.top-table {
-        color: #f4fcc8;
+        color: ${({ theme }) => theme.laliga.texts.primaryText};
 
         h1 {
           font-weight: normal;
@@ -268,8 +268,9 @@ export const Container = styled.div<ContainerProps>`
 
         thead {
           tr {
-            background: rgba(12, 27, 35, 0.66);
-            color: #f4fcc8;
+            background: ${({ theme }) =>
+              theme.laliga.backgrounds.secondaryBackground};
+            color: ${({ theme }) => theme.laliga.texts.primaryText};
 
             font-family: 'Core Sans C 25';
 
@@ -301,7 +302,8 @@ export const Container = styled.div<ContainerProps>`
         }
 
         tbody tr {
-          background: rgba(0, 0, 0, 0.66);
+          background: ${({ theme }) =>
+            theme.laliga.backgrounds.primaryBackground};
           border-radius: 10px;
           color: #92daec;
 
@@ -315,31 +317,37 @@ export const Container = styled.div<ContainerProps>`
 
             border-radius: 4px;
 
-            background: rgba(12, 27, 35, 0.66);
+            background: ${({ theme }) =>
+              theme.laliga.backgrounds.secondaryBackground};
 
             &:nth-child(-n + 2) {
               color: #f4fcc8;
             }
 
             &:nth-child(2n + 4) {
-              background: rgba(12, 18, 21, 0.66);
+              background: ${({ theme }) =>
+                theme.laliga.backgrounds.tertiaryBackground};
             }
           }
 
           &:nth-child(-n + 4) td:first-child {
-            background: #323578;
+            background: ${({ theme }) =>
+              theme.laliga.backgrounds.positions.champions};
           }
 
           &:nth-child(n + 5):nth-child(-n + 6) td:first-child {
-            background: #7d4c9c;
+            background: ${({ theme }) =>
+              theme.laliga.backgrounds.positions.europaleague};
           }
 
           &:nth-child(n + 7):nth-child(-n + 17) td:first-child {
-            border: 1px solid #293d44;
+            border: 1px solid
+              ${({ theme }) => theme.laliga.borders.generalBorder};
           }
 
           &:nth-child(n + 18) td:first-child {
-            background: #c13c2d;
+            background: ${({ theme }) =>
+              theme.laliga.backgrounds.positions.drawdown};
           }
         }
       }
@@ -466,8 +474,9 @@ export const Container = styled.div<ContainerProps>`
     css`
       thead {
         tr {
-          background-color: #37043c;
-          color: #fff;
+          background: ${({ theme }) =>
+            theme.premier.backgrounds.secondaryBackground};
+          color: ${({ theme }) => theme.premier.texts.primaryText};
 
           font-family: 'Poppins', sans-serif;
           font-size: 30px;
@@ -485,9 +494,11 @@ export const Container = styled.div<ContainerProps>`
       }
 
       tbody tr {
-        background-color: #e6e6e6;
+        background-color: ${({ theme }) =>
+          theme.premier.backgrounds.primaryBackground};
 
-        color: #37043c;
+        color: ${({ theme }) => theme.premier.backgrounds.secondaryBackground};
+
         font-size: 24px;
 
         td {
@@ -498,41 +509,49 @@ export const Container = styled.div<ContainerProps>`
           }
 
           &:nth-child(2n + 3) {
-            background: ${shade(0.2, '#e6e6e6')};
+            background: ${({ theme }) =>
+              shade(0.2, theme.premier.backgrounds.primaryBackground)};
           }
         }
 
         &:nth-child(-n + 4) {
-          background-color: #00ff7f;
+          background: ${({ theme }) =>
+            theme.premier.backgrounds.positions.champions};
+
           td:nth-child(2n + 3) {
-            background: ${shade(0.2, '#00ff7f')};
+            background: ${({ theme }) =>
+              shade(0.2, theme.premier.backgrounds.positions.champions)};
           }
           td {
-            color: #fff;
+            color: ${({ theme }) => theme.premier.texts.primaryText};
           }
         }
 
         &:nth-child(5) {
-          background-color: #00f1ff;
+          background: ${({ theme }) =>
+            theme.premier.backgrounds.positions.europaleague};
 
           td:nth-child(2n + 3) {
-            background: ${shade(0.2, '#00f1ff')};
+            background: ${({ theme }) =>
+              shade(0.2, theme.premier.backgrounds.positions.europaleague)};
           }
 
           td {
-            color: #fff;
+            color: ${({ theme }) => theme.premier.texts.primaryText};
           }
         }
 
         &:nth-child(n + 18) {
-          background-color: #fd005b;
+          background: ${({ theme }) =>
+            theme.premier.backgrounds.positions.drawdown};
 
           td:nth-child(2n + 3) {
-            background: ${shade(0.2, '#fd005b')};
+            background: ${({ theme }) =>
+              shade(0.2, theme.premier.backgrounds.positions.drawdown)};
           }
 
           td {
-            color: #fff;
+            color: ${({ theme }) => theme.premier.texts.primaryText};
           }
         }
       }

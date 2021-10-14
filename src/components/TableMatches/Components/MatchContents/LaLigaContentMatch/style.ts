@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
-  background: rgba(0, 0, 0, 0.66);
+  background: ${({ theme }) => theme.laliga.backgrounds.primaryBackground};
   border-radius: 10px;
 
   font-family: 'Core Sans C 25', sans-serif;
@@ -10,9 +10,9 @@ export const Container = styled.div`
   padding: 7px;
 
   div.match-header {
-    color: #f4fcc8;
+    color: ${({ theme }) => theme.laliga.texts.primaryText};
 
-    background: rgba(12, 27, 35, 0.63);
+    background: ${({ theme }) => theme.laliga.backgrounds.secondaryBackground};
     border-radius: 5px;
 
     width: 245px;
@@ -38,7 +38,7 @@ export const Container = styled.div`
       width: 70px;
       height: 70px;
 
-      background: rgba(12, 18, 21, 0.63);
+      background: ${({ theme }) => theme.laliga.backgrounds.tertiaryBackground};
 
       img {
         max-width: 40px;
@@ -57,15 +57,14 @@ export const Container = styled.div`
 
       padding: 0.27vw 0;
 
-      color: #fff;
-
       font-size: 22px;
       text-transform: uppercase;
 
       span.name-team-span {
-        background: rgba(12, 27, 35, 0.63);
+        background: ${({ theme }) =>
+          theme.laliga.backgrounds.secondaryBackground};
 
-        color: #f4fcc8;
+        color: ${({ theme }) => theme.laliga.texts.primaryText};
 
         min-width: 80px;
         border-radius: 5px;
@@ -78,11 +77,11 @@ export const Container = styled.div`
       }
 
       span.score-span {
-        background: rgba(8, 14, 16, 0.63);
-        border: 1px solid #293d44;
+        background: ${({ theme }) => theme.laliga.backgrounds.scoreBackground};
+        border: 1px solid ${({ theme }) => theme.laliga.borders.generalBorder};
 
         font-size: 35px;
-        color: #92daec;
+        color: ${({ theme }) => theme.laliga.texts.secondaryText};
         letter-spacing: 0.05em;
 
         border-radius: 5px;

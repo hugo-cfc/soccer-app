@@ -103,8 +103,9 @@ export const Container = styled.div<ContainerProps>`
       & > header {
         padding: 10px 0;
 
-        background: #000;
-        border-bottom: 4px solid #293d44;
+        background: ${({ theme }) => theme.laliga.backgrounds.headerBackground};
+        border-bottom: 4px solid
+          ${({ theme }) => theme.laliga.borders.headerBorder};
 
         img {
           width: 263px;
@@ -133,12 +134,8 @@ export const Container = styled.div<ContainerProps>`
       & > header {
         height: 70px;
 
-        background: linear-gradient(
-          180deg,
-          #fd005b 0%,
-          #e90959 52.6%,
-          #fd005b 100%
-        );
+        background: ${({ theme }) =>
+          theme.premier.backgrounds.headerBackground};
 
         img {
           width: 146px;

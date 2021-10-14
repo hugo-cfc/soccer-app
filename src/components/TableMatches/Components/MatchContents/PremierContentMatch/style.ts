@@ -6,8 +6,8 @@ export const Container = styled.div`
   width: inherit;
 
   div.match-header {
-    background: #00ff7f;
-    color: #37043c;
+    background: ${({ theme }) => theme.premier.backgrounds.positions.champions};
+    color: ${({ theme }) => theme.premier.backgrounds.secondaryBackground};
 
     padding: 0;
 
@@ -24,7 +24,7 @@ export const Container = styled.div`
 
     height: 50px;
 
-    background: #fff;
+    background: ${({ theme }) => theme.premier.texts.primaryText};
 
     div.emblem-container {
       display: flex;
@@ -52,8 +52,9 @@ export const Container = styled.div`
 
       padding: 0.533vw;
 
-      background-color: #37043c;
-      color: #fff;
+      background-color: ${({ theme }) =>
+        theme.premier.backgrounds.secondaryBackground};
+      color: ${({ theme }) => theme.premier.texts.primaryText};
 
       font-size: 22px;
       text-transform: uppercase;

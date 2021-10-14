@@ -92,7 +92,7 @@ export const MatchesContainer = styled.div<MatchesContainerProps>`
   ${({ idCompetition }) =>
     idCompetition === '2014' &&
     css`
-      background: rgba(0, 0, 0, 0.66);
+      background: ${({ theme }) => theme.laliga.backgrounds.primaryBackground};
 
       border-radius: 10px;
       padding: 10px;
@@ -110,15 +110,16 @@ export const MatchesContainer = styled.div<MatchesContainerProps>`
 
         div#sub-header {
           font-family: 'Core Sans C 25', sans-serif;
-          color: #92daec;
+          color: ${({ theme }) => theme.laliga.texts.secondaryText};
           font-size: 30px;
           font-weight: 200;
 
           button {
-            color: #92daec;
+            color: ${({ theme }) => theme.laliga.texts.secondaryText};
 
             &:hover path {
-              color: ${shade(0.2, '#92DAEC')};
+              color: ${({ theme }) =>
+                shade(0.2, theme.laliga.texts.secondaryText)};
             }
           }
         }
@@ -170,7 +171,8 @@ export const MatchesContainer = styled.div<MatchesContainerProps>`
 
       div#headers-wrapper {
         div#header-table-matches {
-          background-color: #37043c;
+          background-color: ${({ theme }) =>
+            theme.premier.backgrounds.secondaryBackground};
 
           height: 50px;
 
@@ -180,17 +182,19 @@ export const MatchesContainer = styled.div<MatchesContainerProps>`
         }
 
         div#sub-header {
-          background-color: #00f1ff;
+          background-color: ${({ theme }) =>
+            theme.premier.backgrounds.positions.europaleague};
 
-          color: #fff;
+          color: ${({ theme }) => theme.premier.texts.primaryText};
           font-size: 30px;
           font-weight: 500;
 
           button {
-            color: #fff;
+            color: ${({ theme }) => theme.premier.texts.primaryText};
 
             &:hover path {
-              color: ${shade(0.2, '#fff')};
+              color: ${({ theme }) =>
+                shade(0.2, theme.premier.texts.primaryText)};
             }
           }
         }

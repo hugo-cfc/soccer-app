@@ -1,4 +1,4 @@
-import { useEffect, useState, useRef } from 'react';
+import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import api from '../../services/api';
 
@@ -21,13 +21,12 @@ import { Container, LoadingContainer } from './style';
 export const CompetitionPage: React.FC = () => {
   const [standings, setStandings] = useState([]);
   const [matches, setMatches] = useState([]);
-  const [currentMatchday, setCurrentMatchday] = useState<number>(1);
+  const [currentMatchday, setCurrentMatchday] = useState<number>(0);
   const [isErrorRequest, setIsErrorRequest] = useState(false);
 
   const { id } = useParams<{ id: string }>();
 
   const urlCompetitions = `/v2/competitions/${id}/standings`;
-  const firstRender = useRef(1);
   const isValidId =
     id === '2002' ||
     id === '2013' ||
@@ -42,40 +41,25 @@ export const CompetitionPage: React.FC = () => {
     }
 
     (async () => {
-      await api
-        .get(urlCompetitions)
-        .then(response => {
-          setCurrentMatchday(response.data.season.currentMatchday);
-          setStandings(response.data.standings[0].table);
-        })
-        .catch(() => {
-          setIsErrorRequest(true);
-        });
-
-      await api
-        .get(`v2/competitions/${id}/matches?matchday=${currentMatchday}`)
-        .then(response => setMatches(response.data.matches))
-        .catch(() => {
-          setIsErrorRequest(true);
-        });
+      try {
+        const { data } = await api.get(urlCompetitions);
+        setCurrentMatchday(data.season.currentMatchday);
+        setStandings(data.standings[0].table);
+      } catch (error) {
+        setIsErrorRequest(true);
+      }
     })();
   }, []);
 
   useEffect(() => {
-    (async () => {
-      if (firstRender.current === 1 || firstRender.current === 2) {
-        firstRender.current++;
+    if (!currentMatchday) return;
 
-        return;
-      }
-
-      await api
-        .get(`v2/competitions/${id}/matches?matchday=${currentMatchday}`)
-        .then(response => setMatches(response.data.matches))
-        .catch(() => {
-          setIsErrorRequest(true);
-        });
-    })();
+    api
+      .get(`v2/competitions/${id}/matches?matchday=${currentMatchday}`)
+      .then(response => setMatches(response.data.matches))
+      .catch(() => {
+        setIsErrorRequest(true);
+      });
   }, [currentMatchday]);
 
   return (
@@ -115,8 +99,15 @@ export const CompetitionPage: React.FC = () => {
               dataStandings={standings}
               currentMatchday={currentMatchday}
               idCompetition={id}
-              onClickBack={() => setCurrentMatchday(prevState => prevState - 1)}
-              onClickNext={() => setCurrentMatchday(prevState => prevState + 1)}
+              onClickBack={() => {
+                if (currentMatchday === 1) return;
+                setCurrentMatchday(prevState => prevState! - 1);
+              }}
+              onClickNext={() => {
+                if (id === '2002' && currentMatchday === 34) return;
+                if (currentMatchday === 38) return;
+                setCurrentMatchday(prevState => prevState! + 1);
+              }}
             />
 
             {isErrorRequest && <ModalErrorRequisition isValidId={isValidId} />}
