@@ -3,6 +3,7 @@ import ContentMatchData from '../../../../../utils/ContentMatchInterface';
 
 import Ligue1Logo from '../../../../../assets/images/competitionsLogo/ligue1LogoWrd.svg';
 import { Container } from './style';
+import NameTeamRegex from '../../../../../utils/NameTeamRegex';
 
 export const Ligue1ContentMatch: React.FC<ContentMatchData> = ({
   matchesData,
@@ -22,12 +23,12 @@ export const Ligue1ContentMatch: React.FC<ContentMatchData> = ({
               teamHomeLogo[0]?.team?.crestUrl ||
               'https://w7.pngwing.com/pngs/171/651/png-transparent-computer-icons-computer-security-interrogation-logo-shield-question.png'
             }
-            alt={matchesData.homeTeam.name}
+            alt={NameTeamRegex(matchesData.homeTeam.name)}
           />
         </div>
 
         <div className="score">
-          <span>{matchesData.homeTeam.name.slice(0, 3)}</span>
+          <span>{NameTeamRegex(matchesData.homeTeam.name).slice(0, 3)}</span>
           <span className="score-number">
             {matchesData.score.fullTime.homeTeam}
           </span>
@@ -37,7 +38,7 @@ export const Ligue1ContentMatch: React.FC<ContentMatchData> = ({
           <span className="score-number">
             {matchesData.score.fullTime.awayTeam}
           </span>
-          <span>{matchesData.awayTeam.name.slice(0, 3)}</span>
+          <span>{NameTeamRegex(matchesData.awayTeam.name).slice(0, 3)}</span>
         </div>
 
         <div className="emblem-container">
@@ -46,7 +47,7 @@ export const Ligue1ContentMatch: React.FC<ContentMatchData> = ({
               teamAwayLogo[0]?.team.crestUrl ||
               'https://w7.pngwing.com/pngs/171/651/png-transparent-computer-icons-computer-security-interrogation-logo-shield-question.png'
             }
-            alt={matchesData.awayTeam.name}
+            alt={NameTeamRegex(matchesData.awayTeam.name)}
           />
         </div>
       </div>

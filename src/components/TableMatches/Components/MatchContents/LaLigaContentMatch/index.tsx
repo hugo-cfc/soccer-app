@@ -2,6 +2,7 @@ import DataMatchRegex from '../../../../../utils/DataMatchRegex';
 import ContentMatchData from '../../../../../utils/ContentMatchInterface';
 
 import { Container } from './style';
+import NameTeamRegex from '../../../../../utils/NameTeamRegex';
 
 export const LaLigaMatch: React.FC<ContentMatchData> = ({
   matchesData,
@@ -16,13 +17,13 @@ export const LaLigaMatch: React.FC<ContentMatchData> = ({
         <div className="emblem-container">
           <img
             src={teamHomeLogo[0]?.team?.crestUrl}
-            alt={matchesData.homeTeam.name}
+            alt={NameTeamRegex(matchesData.homeTeam.name)}
           />
         </div>
 
         <div className="score">
           <span className="name-team-span">
-            {matchesData.homeTeam.name.slice(0, 3)}
+            {NameTeamRegex(matchesData.homeTeam.name).slice(0, 3)}
           </span>
           <span className="score-span">
             {matchesData.score.fullTime.homeTeam}
@@ -31,14 +32,14 @@ export const LaLigaMatch: React.FC<ContentMatchData> = ({
             {matchesData.score.fullTime.awayTeam}
           </span>
           <span className="name-team-span">
-            {matchesData.awayTeam.name.slice(0, 3)}
+            {NameTeamRegex(matchesData.awayTeam.name).slice(0, 3)}
           </span>
         </div>
 
         <div className="emblem-container">
           <img
             src={teamAwayLogo[0]?.team.crestUrl}
-            alt={matchesData.awayTeam.name}
+            alt={NameTeamRegex(matchesData.awayTeam.name)}
           />
         </div>
       </div>

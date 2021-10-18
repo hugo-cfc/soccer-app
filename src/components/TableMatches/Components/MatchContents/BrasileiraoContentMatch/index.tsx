@@ -2,6 +2,7 @@ import DataMatchRegex from '../../../../../utils/DataMatchRegex';
 import ContentMatchData from '../../../../../utils/ContentMatchInterface';
 
 import { Container } from './style';
+import NameTeamRegex from '../../../../../utils/NameTeamRegex';
 
 export const BrasileiraoContentMatch: React.FC<ContentMatchData> = ({
   matchesData,
@@ -22,7 +23,7 @@ export const BrasileiraoContentMatch: React.FC<ContentMatchData> = ({
               src={teamHomeLogo[0]?.team?.crestUrl}
               alt={matchesData.homeTeam.name}
             />
-            <span>{matchesData.homeTeam.name}</span>
+            <span>{NameTeamRegex(matchesData.homeTeam.name)}</span>
           </div>
           <span>{matchesData.score.fullTime.homeTeam}</span>
         </div>
@@ -31,9 +32,9 @@ export const BrasileiraoContentMatch: React.FC<ContentMatchData> = ({
           <div className="team-info">
             <img
               src={teamAwayLogo[0]?.team.crestUrl}
-              alt={matchesData.awayTeam.name}
+              alt={NameTeamRegex(matchesData.awayTeam.name)}
             />
-            <span>{matchesData.awayTeam.name}</span>
+            <span>{NameTeamRegex(matchesData.awayTeam.name)}</span>
           </div>
           <span>{matchesData.score.fullTime.awayTeam}</span>
         </div>

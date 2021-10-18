@@ -10,10 +10,11 @@ export const Container = styled.div`
     justify-content: center;
 
     & > span {
-      background: #fff;
-      border: 1px solid #d0fb0c;
+      background: ${({ theme }) => theme.ligue1.texts.primaryText};
+      border: 1px solid
+        ${({ theme }) => theme.ligue1.backgrounds.secondaryColor};
 
-      color: #091c3d;
+      color: ${({ theme }) => theme.ligue1.backgrounds.primaryColor};
 
       padding: 5px 10px;
 
@@ -54,7 +55,7 @@ export const Container = styled.div`
 
       padding: 0.533vw;
 
-      color: #fff;
+      color: ${({ theme }) => theme.ligue1.texts.primaryText};
 
       font-size: 22px;
       font-family: 'Ligue 1 V1 Bold', sans-serif;
@@ -67,7 +68,7 @@ export const Container = styled.div`
         justify-content: center;
 
         &.score-number {
-          color: #d0fb0c;
+          color: ${({ theme }) => theme.ligue1.backgrounds.secondaryColor};
         }
       }
     }

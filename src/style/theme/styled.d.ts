@@ -52,13 +52,38 @@ declare module 'styled-components' {
       };
 
       backgrounds: {
-        primaryBackground: string;
-        secondaryBackground: string;
-        headerBackground: string;
+        primaryColor: string;
+        secondaryColor: string;
+        transparentBackground: string;
+        theaderBackground: string;
+        theaderBackgroundShort: string;
 
         positions: {
-          champions: string;
-          europaleague: string;
+          playoffsChampions: string;
+          europaLeague: string;
+          conferenceLeague: string;
+          playoffsDrawdown: string;
+          drawdown: string;
+        };
+      };
+    };
+
+    brasileirao: {
+      colors: {
+        primary: string;
+        secondary: string;
+      };
+
+      backgrounds: {
+        headerBackground: string;
+        headerBackgroundTableMatches: string;
+        theaderBackground: string;
+        theaderBackgroundShort: string;
+        table: string;
+
+        positions: {
+          libertadores: string;
+          playoffsLibertadores: string;
           drawdown: string;
         };
       };

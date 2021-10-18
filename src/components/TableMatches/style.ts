@@ -58,14 +58,15 @@ export const MatchesContainer = styled.div<MatchesContainerProps>`
   ${({ idCompetition }) =>
     idCompetition === '2013' &&
     css`
-      background-color: #001959;
+      background-color: ${({ theme }) => theme.brasileirao.colors.primary};
 
       div#headers-wrapper {
-        background: linear-gradient(178deg, #38ff00 47.83%, #001959 48.84%);
-        color: #38ff00;
+        background: ${({ theme }) =>
+          theme.brasileirao.backgrounds.headerBackgroundTableMatches};
+        color: ${({ theme }) => theme.brasileirao.colors.secondary};
 
         div#header-table-matches {
-          color: #001959;
+          color: ${({ theme }) => theme.brasileirao.colors.primary};
 
           height: 50px;
 
@@ -79,10 +80,11 @@ export const MatchesContainer = styled.div<MatchesContainerProps>`
 
         div#sub-header {
           button {
-            color: #38ff00;
+            color: ${({ theme }) => theme.brasileirao.colors.secondary};
 
             &:hover path {
-              color: ${shade(0.2, '#38ff00')};
+              color: ${({ theme }) =>
+                shade(0.2, theme.brasileirao.colors.secondary)};
             }
           }
         }
@@ -129,8 +131,10 @@ export const MatchesContainer = styled.div<MatchesContainerProps>`
   ${({ idCompetition }) =>
     idCompetition === '2015' &&
     css`
-      background: #091c3e;
-      border: 1px solid #d0fb0c;
+      background: ${({ theme }) =>
+        theme.ligue1.backgrounds.transparentBackground};
+      border: 1px solid
+        ${({ theme }) => theme.ligue1.backgrounds.secondaryColor};
 
       div#headers-wrapper {
         div#header-table-matches {
@@ -142,22 +146,22 @@ export const MatchesContainer = styled.div<MatchesContainerProps>`
         }
 
         div#sub-header {
-          background-color: #d0fb0c;
-          color: #091c3e;
+          background-color: ${({ theme }) =>
+            theme.ligue1.backgrounds.secondaryColor};
+          color: ${({ theme }) => theme.ligue1.backgrounds.primaryColor};
 
           font-size: 30px;
 
           div#current-match-container {
-            padding-top: 10px;
-
             font-family: 'Ligue 1 V1 Medium', sans-serif;
           }
 
           button {
-            color: #091c3e;
+            color: ${({ theme }) => theme.ligue1.backgrounds.primaryColor};
 
             &:hover path {
-              color: shade(0.2, '#091C3E');
+              color: ${({ theme }) =>
+                shade(0.2, theme.ligue1.backgrounds.primaryColor)};
             }
           }
         }

@@ -1,4 +1,5 @@
 import TeamData from '../../utils/TeamDataInterface';
+import NameTeamRegex from '../../utils/NameTeamRegex';
 
 import laLigaLogo from '../../assets/images/competitionsLogo/laligaLogoBlue.svg';
 
@@ -62,7 +63,9 @@ export const Table: React.FC<TableProps> = ({ data, idCompetition }) => {
                 <td className="positionCell">
                   <div className="positionContainer">{team.position}</div>
                 </td>
-                <td className="team-name-td">{team.team.name}</td>
+                <td className="team-name-td">
+                  {NameTeamRegex(team.team.name)}
+                </td>
                 <td>{team.points}</td>
                 <td>{team.playedGames}</td>
                 <td>{team.won}</td>

@@ -33,7 +33,7 @@ export const Container = styled.div<ContainerProps>`
 
   background-image: ${props => backgrounds[props.idCompetition]};
 
-  background-color: #001959;
+  background-color: ${({ theme }) => theme.brasileirao.colors.primary};
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-position: center;
@@ -72,13 +72,10 @@ export const Container = styled.div<ContainerProps>`
     css`
       & > header {
         height: 120px;
-        background: linear-gradient(
-          178deg,
-          #38ff00 62.82%,
-          rgba(56, 255, 0, 0) 63.89%
-        );
+        background: ${({ theme }) =>
+          theme.brasileirao.backgrounds.headerBackground};
 
-        color: #001959;
+        color: ${({ theme }) => theme.brasileirao.colors.primary};
 
         padding-bottom: 35px;
 
@@ -120,7 +117,8 @@ export const Container = styled.div<ContainerProps>`
         padding: 7px 0;
 
         background: #091c3e;
-        border-bottom: 3px solid #d0fb0c;
+        border-bottom: 3px solid
+          ${({ theme }) => theme.ligue1.backgrounds.secondaryColor};
 
         img {
           width: 230px;
@@ -165,7 +163,7 @@ export const Container = styled.div<ContainerProps>`
 `;
 
 export const LoadingContainer = styled.div<ContainerProps>`
-  background-color: #001959;
+  background-color: ${({ theme }) => theme.brasileirao.colors.primary};
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-position: center;
