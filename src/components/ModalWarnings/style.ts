@@ -21,7 +21,7 @@ export const Container = styled.div<ContainerProps>`
   width: 100vw;
   height: 100vh;
 
-  background: rgba(0, 0, 0, 0.6);
+  background: ${({ theme }) => theme.general.backgroundModal};
   backdrop-filter: blur(7px);
 
   display: flex;
@@ -29,9 +29,9 @@ export const Container = styled.div<ContainerProps>`
   justify-content: center;
 
   div#warnings-container {
-    background: rgba(0, 0, 0, 0.72);
-    border: 3px solid #ffffff;
-    color: #ffffff;
+    background: ${({ theme }) => theme.general.backgroundContainerWarnings};
+    border: 3px solid ${({ theme }) => theme.general.text};
+    color: ${({ theme }) => theme.general.text};
 
     max-width: 600px;
     padding: 25px;
@@ -44,7 +44,7 @@ export const Container = styled.div<ContainerProps>`
       background: transparent;
       border: 0;
 
-      color: #ffffff;
+      color: ${({ theme }) => theme.general.text};
 
       position: absolute;
       right: 20px;
@@ -64,7 +64,7 @@ export const Container = styled.div<ContainerProps>`
       }
 
       p a {
-        color: #fff;
+        color: ${({ theme }) => theme.general.text};
       }
     }
   }

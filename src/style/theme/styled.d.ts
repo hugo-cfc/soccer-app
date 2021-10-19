@@ -2,6 +2,18 @@ import 'styled-components';
 
 declare module 'styled-components' {
   export interface DefaultTheme {
+    general: {
+      text: string;
+      backgroundContainer: string;
+      backgroundModal: string;
+      backgroundContainerWarnings: string;
+
+      buttonHomeActive: {
+        borderColor: string;
+        background: string;
+      };
+    };
+
     laliga: {
       texts: {
         primaryText: string;

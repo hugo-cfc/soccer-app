@@ -1,6 +1,18 @@
 import { DefaultTheme } from 'styled-components';
 
 export const defaultTheme: DefaultTheme = {
+  general: {
+    text: '#fff',
+    backgroundContainer: 'rgba(0, 0, 0, 0.44)',
+    backgroundModal: 'rgba(0, 0, 0, 0.6)',
+    backgroundContainerWarnings: 'rgba(0, 0, 0, 0.72)',
+
+    buttonHomeActive: {
+      borderColor: '#3b3b3b',
+      background: '#e6e6e6',
+    },
+  },
+
   laliga: {
     texts: {
       primaryText: '#F4FCC8',

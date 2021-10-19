@@ -117,12 +117,27 @@ export const Container = styled.div<ContainerProps>`
       & > header {
         padding: 7px 0;
 
-        background: #091c3e;
+        background: ${({ theme }) => theme.ligue1.backgrounds.primaryColor};
         border-bottom: 3px solid
           ${({ theme }) => theme.ligue1.backgrounds.secondaryColor};
 
         img {
           width: 230px;
+        }
+      }
+    `};
+
+  ${({ idCompetition }) =>
+    idCompetition === '2019' &&
+    css`
+      & > header {
+        height: 70px;
+
+        background: ${({ theme }) =>
+          theme.premier.backgrounds.headerBackground};
+
+        img {
+          width: 146px;
         }
       }
     `};
@@ -177,7 +192,7 @@ export const LoadingContainer = styled.div<ContainerProps>`
     width: 100vw;
     height: 100vh;
 
-    background: rgba(0, 0, 0, 0.6);
+    background: ${({ theme }) => theme.general.backgroundModal};
     backdrop-filter: blur(7px);
 
     display: flex;
@@ -186,7 +201,7 @@ export const LoadingContainer = styled.div<ContainerProps>`
   }
 
   .loader {
-    background: #fff;
+    background: ${({ theme }) => theme.general.text};
 
     width: 120px;
     height: 120px;

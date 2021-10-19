@@ -4,7 +4,7 @@ export const Container = styled.div`
   width: 100vw;
   height: 100vh;
 
-  background: rgba(0, 0, 0, 0.6);
+  background: ${({ theme }) => theme.general.backgroundModal};
   backdrop-filter: blur(7px);
 
   display: flex;
@@ -15,9 +15,9 @@ export const Container = styled.div`
   top: 0;
 
   div#requisition-error-container {
-    background: rgba(0, 0, 0, 0.72);
-    border: 3px solid #ffffff;
-    color: #ffffff;
+    background: ${({ theme }) => theme.general.backgroundContainerWarnings};
+    border: 3px solid ${({ theme }) => theme.general.text};
+    color: ${({ theme }) => theme.general.text};
 
     max-width: 900px;
     padding: 60px;
@@ -27,8 +27,7 @@ export const Container = styled.div`
     display: flex;
 
     img {
-      background: rgba(0, 0, 0, 0.72);
-      border: 3px solid #ffffff;
+      border: 3px solid ${({ theme }) => theme.general.text};
 
       margin-right: 40px;
 
@@ -52,7 +51,7 @@ export const Container = styled.div`
         justify-content: center;
         align-items: center;
 
-        color: #ffffff;
+        color: ${({ theme }) => theme.general.text};
 
         svg {
           margin-right: 10px;

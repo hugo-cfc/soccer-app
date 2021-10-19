@@ -44,7 +44,7 @@ export const Container = styled.main`
   background-position: center center;
 
   font-family: Rajdhani;
-  color: #fff;
+  color: ${({ theme }) => theme.general.text};
 
   section.infos {
     width: 38vw;
@@ -146,7 +146,7 @@ export const Contacts = styled.div`
       a {
         text-decoration: none;
         font-size: 0.86vw;
-        color: #fff;
+        color: ${({ theme }) => theme.general.text};
 
         display: flex;
         align-items: center;
@@ -192,8 +192,8 @@ export const CompetitionsContainer = styled.section`
 
   align-self: center;
 
-  background: rgba(0, 0, 0, 0.44);
-  border: 3px solid #ffffff;
+  background: ${({ theme }) => theme.general.backgroundContainer};
+  border: 3px solid ${({ theme }) => theme.general.text};
 
   position: relative;
   animation: ${topFromBottomAnimation};

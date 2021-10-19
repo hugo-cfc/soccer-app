@@ -27,13 +27,13 @@ export const HomeButton = styled.button`
   bottom: 30px;
 
   border-radius: 50%;
-  border: 3px solid #fff;
+  border: 3px solid ${({ theme }) => theme.general.text};
 
   width: 100px;
   height: 100px;
 
-  background-color: rgba(0, 0, 0, 0.44);
-  color: #fff;
+  background-color: ${({ theme }) => theme.general.backgroundContainer};
+  color: ${({ theme }) => theme.general.text};
 
   font-size: 40px;
 
