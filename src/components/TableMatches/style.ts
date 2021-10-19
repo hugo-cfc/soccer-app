@@ -22,7 +22,8 @@ export const MatchesContainer = styled.div<MatchesContainerProps>`
         div#header-table-matches {
           padding: 8px 0;
 
-          background: #353733;
+          background: ${({ theme }) =>
+            theme.bundesliga.backgrounds.opaqueBackgroundDark};
 
           img {
             width: 60px;
@@ -30,8 +31,8 @@ export const MatchesContainer = styled.div<MatchesContainerProps>`
         }
 
         div#sub-header {
-          background: #c90e17;
-          color: #fff;
+          background: ${({ theme }) => theme.bundesliga.colors.primary};
+          color: ${({ theme }) => theme.bundesliga.colors.secondary};
 
           font-size: 30px;
 
@@ -45,10 +46,11 @@ export const MatchesContainer = styled.div<MatchesContainerProps>`
           }
 
           button {
-            color: #fff;
+            color: ${({ theme }) => theme.bundesliga.colors.secondary};
 
             &:hover path {
-              color: ${shade(0.2, '#fff')};
+              color: ${({ theme }) =>
+                shade(0.2, theme.bundesliga.colors.secondary)};
             }
           }
         }

@@ -8,21 +8,15 @@ export const Container = styled.div`
   height: fit-content;
 
   div.match-header {
-    background: #001959;
-
     margin-bottom: 5px;
     padding: 0;
 
     text-align: center;
 
     & > span {
-      background: linear-gradient(
-        183deg,
-        #38ff00 75.21%,
-        rgba(56, 255, 0, 0) 78.22%,
-        rgba(56, 255, 0, 0) 77.91%
-      );
-      color: #001959;
+      background: ${({ theme }) =>
+        theme.brasileirao.backgrounds.contentMatchHeader};
+      color: ${({ theme }) => theme.brasileirao.colors.primary};
 
       padding: 5px;
       padding-bottom: 8px;
@@ -40,11 +34,11 @@ export const Container = styled.div`
 
       padding: 10px 15px;
 
-      color: #fff;
+      color: ${({ theme }) => theme.brasileirao.backgrounds.table};
 
       &:nth-child(2) {
         position: relative;
-        border-top: 1px solid #001959;
+        border-top: 1px solid ${({ theme }) => theme.brasileirao.colors.primary};
 
         &:after {
           content: '';
@@ -53,7 +47,8 @@ export const Container = styled.div`
           height: 2px;
           padding: 0;
           margin: 0;
-          background-color: #38ff00;
+          background-color: ${({ theme }) =>
+            theme.brasileirao.colors.secondary};
           position: absolute;
           right: 0px;
           top: -1px;

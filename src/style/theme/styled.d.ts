@@ -79,12 +79,31 @@ declare module 'styled-components' {
         headerBackgroundTableMatches: string;
         theaderBackground: string;
         theaderBackgroundShort: string;
+        contentMatchHeader: string;
         table: string;
 
         positions: {
-          libertadores: string;
           playoffsLibertadores: string;
           drawdown: string;
+        };
+      };
+    };
+
+    bundesliga: {
+      colors: {
+        primary: string;
+        secondary: string;
+      };
+
+      backgrounds: {
+        background: string;
+        opaqueBackgroundDark: string;
+        opaqueBackgroundLight: string;
+        positions: {
+          default: string;
+          conferenceLeague: string;
+          drawdownPlayoffs: string;
+          championsDrawdown: string;
         };
       };
     };

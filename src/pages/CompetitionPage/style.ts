@@ -58,8 +58,9 @@ export const Container = styled.div<ContainerProps>`
       & > header {
         padding: 10px 0;
 
-        background: #c90e17;
-        border-bottom: 3px solid #ffffff;
+        background: ${({ theme }) => theme.bundesliga.colors.primary};
+        border-bottom: 3px solid
+          ${({ theme }) => theme.bundesliga.colors.secondary};
 
         img {
           width: 103px;

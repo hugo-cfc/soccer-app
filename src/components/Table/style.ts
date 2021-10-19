@@ -63,10 +63,10 @@ export const Container = styled.div<ContainerProps>`
   ${({ idCompetition }) =>
     idCompetition === '2002' &&
     css`
-      background: rgba(0, 0, 0, 0.49);
+      background: ${({ theme }) => theme.bundesliga.backgrounds.background};
 
       div.top-table {
-        color: #fff;
+        color: ${({ theme }) => theme.bundesliga.colors.secondary};
 
         padding: 25px 0;
 
@@ -78,8 +78,10 @@ export const Container = styled.div<ContainerProps>`
       table {
         thead {
           tr {
-            background: rgba(229, 229, 229, 0.63);
-            color: #3a3d39;
+            background: ${({ theme }) =>
+              theme.bundesliga.backgrounds.positions.default};
+            color: ${({ theme }) =>
+              theme.bundesliga.backgrounds.opaqueBackgroundDark};
 
             font-family: 'Rajdhani', sans-serif;
           }
@@ -88,15 +90,18 @@ export const Container = styled.div<ContainerProps>`
         tbody tr {
           font-family: 'Rajdhani', sans-serif;
           font-weight: bold;
-          color: #313332;
+          color: ${({ theme }) =>
+            theme.bundesliga.backgrounds.opaqueBackgroundDark};
 
-          background: rgba(229, 229, 229, 0.63);
+          background: ${({ theme }) =>
+            theme.bundesliga.backgrounds.positions.default};
 
           &:nth-child(-n + 4) {
-            background: rgba(189, 46, 57, 0.6);
+            background: ${({ theme }) =>
+              theme.bundesliga.backgrounds.positions.championsDrawdown};
 
             td {
-              color: #fff;
+              color: ${({ theme }) => theme.bundesliga.colors.secondary};
             }
           }
 
@@ -104,27 +109,30 @@ export const Container = styled.div<ContainerProps>`
             background: transparent;
 
             td {
-              color: #fff;
+              color: ${({ theme }) => theme.bundesliga.colors.secondary};
             }
           }
 
           &:nth-child(7) {
-            background: rgba(229, 229, 229, 0.8);
+            background: ${({ theme }) =>
+              theme.bundesliga.backgrounds.positions.conferenceLeague};
           }
 
           &:nth-child(16) {
-            background: rgba(222, 93, 102, 0.6);
+            background: ${({ theme }) =>
+              theme.bundesliga.backgrounds.positions.drawdownPlayoffs};
 
             td {
-              color: #fff;
+              color: ${({ theme }) => theme.bundesliga.colors.secondary};
             }
           }
 
           &:nth-child(n + 17) {
-            background: rgba(189, 46, 57, 0.6);
+            background: ${({ theme }) =>
+              theme.bundesliga.backgrounds.positions.championsDrawdown};
 
             td {
-              color: #fff;
+              color: ${({ theme }) => theme.bundesliga.colors.secondary};
             }
           }
         }
@@ -174,7 +182,7 @@ export const Container = styled.div<ContainerProps>`
         }
 
         tbody tr {
-          background: #fff;
+          background: ${({ theme }) => theme.brasileirao.backgrounds.table};
 
           td {
             font-family: Roboto, sans-serif;
@@ -218,7 +226,8 @@ export const Container = styled.div<ContainerProps>`
           &:nth-child(n + 5):nth-child(-n + 6) {
             td {
               .positionContainer {
-                background-color: #ffff0d;
+                background: ${({ theme }) =>
+                  theme.brasileirao.backgrounds.positions.playoffsLibertadores};
               }
             }
           }
@@ -226,7 +235,8 @@ export const Container = styled.div<ContainerProps>`
           &:nth-child(n + 17) {
             td {
               .positionContainer {
-                background-color: #e90909;
+                background: ${({ theme }) =>
+                  theme.brasileirao.backgrounds.positions.drawdown};
               }
             }
           }

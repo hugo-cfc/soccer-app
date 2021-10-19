@@ -86,13 +86,33 @@ export const defaultTheme: DefaultTheme = {
         'linear-gradient(178deg, #38ff00 58.11%, #001959 59.12%)',
 
       theaderBackgroundShort:
-        'linear-gradient( 180deg, #38ff00 58.11%, #001959 59.12%)',
+        'linear-gradient(180deg, #38ff00 58.11%, #001959 59.12%)',
+      contentMatchHeader:
+        'linear-gradient(183deg, #38ff00 75.21%, rgba(56, 255, 0, 0) 78.22%, rgba(56, 255, 0, 0) 77.91%)',
       table: '#fff',
 
       positions: {
-        libertadores: '#07C26B',
-        playoffsLibertadores: '#00F1FF',
-        drawdown: '#c13c2d',
+        playoffsLibertadores: '#ffff0d',
+        drawdown: '#e90909',
+      },
+    },
+  },
+
+  bundesliga: {
+    colors: {
+      primary: '#C90E17',
+      secondary: '#FFFFFF',
+    },
+
+    backgrounds: {
+      background: 'rgba(0, 0, 0, 0.49)',
+      opaqueBackgroundDark: '#353733',
+      opaqueBackgroundLight: '#D8D7D3',
+      positions: {
+        default: 'rgba(229, 229, 229, 0.63)',
+        conferenceLeague: 'rgba(229, 229, 229, 0.8)',
+        drawdownPlayoffs: 'rgba(222, 93, 102, 0.6)',
+        championsDrawdown: 'rgba(189, 46, 57, 0.6)',
       },
     },
   },

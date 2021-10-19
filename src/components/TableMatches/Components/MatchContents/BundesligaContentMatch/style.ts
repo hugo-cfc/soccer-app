@@ -1,9 +1,10 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
-  background: #d8d7d3;
+  background: ${({ theme }) =>
+    theme.bundesliga.backgrounds.opaqueBackgroundLight};
 
-  border-bottom: 1px solid #c90e17;
+  border-bottom: 1px solid ${({ theme }) => theme.bundesliga.colors.primary};
 
   font-family: 'Rajdhani', sans-serif;
   font-weight: bold;
@@ -13,10 +14,11 @@ export const Container = styled.div`
     justify-content: center;
 
     & > span {
-      background: #353733;
-      border: 1px solid #c90e17;
+      background: ${({ theme }) =>
+        theme.bundesliga.backgrounds.opaqueBackgroundDark};
+      border: 1px solid ${({ theme }) => theme.bundesliga.colors.primary};
 
-      color: #fff;
+      color: ${({ theme }) => theme.bundesliga.colors.secondary};
 
       padding: 5px 10px;
 
@@ -55,7 +57,8 @@ export const Container = styled.div`
 
       padding: 0.533vw;
 
-      color: #313332;
+      color: ${({ theme }) =>
+        theme.bundesliga.backgrounds.opaqueBackgroundDark};
 
       font-size: 22px;
       text-transform: uppercase;
