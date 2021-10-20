@@ -131,13 +131,24 @@ export const Container = styled.div<ContainerProps>`
     idCompetition === '2019' &&
     css`
       & > header {
-        height: 70px;
+        background: ${({ theme }) => theme.serieATim.colors.primary};
+        border-bottom: 3px solid ${({ theme }) => theme.serieATim.text};
 
-        background: ${({ theme }) =>
-          theme.premier.backgrounds.headerBackground};
+        padding: 10px;
 
         img {
-          width: 146px;
+          width: 44px;
+
+          margin-right: 16px;
+        }
+
+        h1 {
+          font-family: 'DIN Next Bold', sans-serif;
+          font-weight: 900;
+          font-size: 28px;
+          text-transform: uppercase;
+
+          color: ${({ theme }) => theme.serieATim.text};
         }
       }
     `};

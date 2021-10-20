@@ -485,6 +485,61 @@ export const Container = styled.div<ContainerProps>`
     `};
 
   ${({ idCompetition }) =>
+    idCompetition === '2019' &&
+    css`
+      thead {
+        tr {
+          background: ${({ theme }) => theme.serieATim.background};
+          color: ${({ theme }) => theme.serieATim.colors.primary};
+          border-bottom: 3px solid ${({ theme }) => theme.serieATim.text};
+
+          font-family: 'DIN Next Bold', sans-serif;
+          font-size: 30px;
+
+          th {
+            padding: 8px;
+            min-width: 66px;
+            font-weight: 400;
+
+            &:first-child {
+              background: ${({ theme }) => theme.serieATim.colors.primary};
+            }
+          }
+        }
+      }
+
+      tbody tr {
+        background-color: ${({ theme }) => theme.serieATim.background};
+        color: ${({ theme }) => theme.premier.backgrounds.secondaryBackground};
+        border-bottom: 3px solid ${({ theme }) => theme.serieATim.text};
+
+        font-size: 24px;
+
+        &:last-child {
+          border: 0;
+        }
+
+        td {
+          font-weight: bold;
+          font-family: 'DIN Next Light', sans-serif;
+          color: ${({ theme }) => theme.serieATim.colors.primary};
+
+          &:nth-child(2n + 1) {
+            background: ${({ theme }) =>
+              shade(0.2, theme.serieATim.colors.primary)};
+            color: ${({ theme }) => theme.serieATim.text};
+          }
+
+          &:nth-child(2n + 4) {
+            background: ${({ theme }) =>
+              shade(0.2, theme.serieATim.colors.secondary)};
+            color: ${({ theme }) => theme.serieATim.text};
+          }
+        }
+      }
+    `};
+
+  ${({ idCompetition }) =>
     idCompetition === '2021' &&
     css`
       thead {

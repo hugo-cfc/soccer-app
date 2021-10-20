@@ -128,6 +128,18 @@ export const defaultTheme: DefaultTheme = {
       },
     },
   },
+
+  serieATim: {
+    colors: {
+      primary: '#00197D',
+      secondary: '#125BC9',
+      tertiary: '#1F7DD9',
+    },
+
+    text: '#fff',
+
+    background: '#EFEFEF',
+  },
 };
 
 export default defaultTheme;

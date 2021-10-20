@@ -11,6 +11,7 @@ import BrasileiraoLogo from '../../assets/images/competitionsLogo/logoBrasileira
 import LaLigaLogo from '../../assets/images/competitionsLogo/laLigaLogoHeaderYellow.svg';
 import Ligue1Logo from '../../assets/images/competitionsLogo/ligue1Logo.svg';
 import BundesligaLogo from '../../assets/images/competitionsLogo/bundesligaLogo.svg';
+import SerieATIM from '../../assets/images/competitionsLogo/serieALogo.png';
 import Ball from '../../assets/icons/ball.png';
 
 import Table from '../../components/Table';
@@ -32,6 +33,7 @@ export const CompetitionPage: React.FC = () => {
     id === '2013' ||
     id === '2014' ||
     id === '2015' ||
+    id === '2019' ||
     id === '2021';
 
   useEffect(() => {
@@ -74,6 +76,7 @@ export const CompetitionPage: React.FC = () => {
                   '2013': BrasileiraoLogo,
                   '2014': LaLigaLogo,
                   '2015': Ligue1Logo,
+                  '2019': SerieATIM,
                   '2021': PremierLogo,
                 }[id]
               }
@@ -83,12 +86,14 @@ export const CompetitionPage: React.FC = () => {
                   '2013': 'Brasileirao',
                   '2014': 'La Liga',
                   '2015': 'Ligue 1',
+                  '2019': 'Série A TIM',
                   '2021': 'Premier League',
                 }[id]
               }
             />
 
             {id === '2013' && <h1>Brasileirão - 2021</h1>}
+            {id === '2019' && <h1>Série A TIM</h1>}
           </header>
 
           <main>

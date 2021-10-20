@@ -17,6 +17,9 @@ import Ligue1ContentMatch from './Components/MatchContents/Ligue1ContentMatch';
 import BundesligaLogo from '../../assets/images/competitionsLogo/bundesligaLogo.svg';
 import BundesligaContentMatch from './Components/MatchContents/BundesligaContentMatch';
 
+import SerieALogo from '../../assets/images/competitionsLogo/serieALogo.png';
+import SerieAContentMatch from './Components/MatchContents/SerieAContentMatch';
+
 import { MatchesContainer } from './style';
 
 interface TableMatchesProps {
@@ -46,6 +49,7 @@ export const TableMatches: React.FC<TableMatchesProps> = ({
                 '2002': BundesligaLogo,
                 '2014': LaLigaLogo,
                 '2015': Ligue1Logo,
+                '2019': SerieALogo,
                 '2021': PremierLogo,
               }[idCompetition]
             }
@@ -54,6 +58,7 @@ export const TableMatches: React.FC<TableMatchesProps> = ({
                 '2002': 'Bundesliga',
                 '2014': 'La Liga Santander',
                 '2015': 'Ligue 1',
+                '2019': 'Série A TIM',
                 '2021': 'Premier League',
               }[idCompetition]
             }
@@ -108,6 +113,13 @@ export const TableMatches: React.FC<TableMatchesProps> = ({
                 ),
                 '2015': (
                   <Ligue1ContentMatch
+                    matchesData={match}
+                    teamHomeLogo={teamHomeLogo}
+                    teamAwayLogo={teamAwayLogo}
+                  />
+                ),
+                '2019': (
+                  <SerieAContentMatch
                     matchesData={match}
                     teamHomeLogo={teamHomeLogo}
                     teamAwayLogo={teamAwayLogo}

@@ -46,4 +46,15 @@ export default createGlobalStyle`
     font-weight: 500;
     src: local('LigueV-Bold'), url('/fonts/liguev-bold.woff') format('woff');
   }
+
+  @font-face {
+    font-family: 'DIN Next Bold';
+    font-style: normal;
+    src: local('DINNextLTPro-Bold'), url('/fonts/DINNextLTPro-Bold.woff') format('woff');
+  }
+  @font-face {
+    font-family: 'DIN Next Light';
+    font-style: normal;
+    src: local('DINNextLTPro-Light'), url('/fonts/DINNextLTPro-Light.woff') format('woff');
+  }
 `;

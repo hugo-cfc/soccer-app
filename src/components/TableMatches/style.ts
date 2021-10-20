@@ -171,6 +171,40 @@ export const MatchesContainer = styled.div<MatchesContainerProps>`
     `};
 
   ${({ idCompetition }) =>
+    idCompetition === '2019' &&
+    css`
+      font-family: 'DIN Next Bold', sans-serif;
+
+      div#headers-wrapper {
+        div#header-table-matches {
+          background-color: ${({ theme }) => theme.serieATim.colors.primary};
+
+          padding: 10px;
+
+          img {
+            width: 31px;
+          }
+        }
+
+        div#sub-header {
+          background-color: ${({ theme }) => theme.serieATim.colors.secondary};
+
+          color: ${({ theme }) => theme.serieATim.text};
+          font-size: 30px;
+          font-weight: 500;
+
+          button {
+            color: ${({ theme }) => theme.serieATim.text};
+
+            &:hover path {
+              color: ${({ theme }) => shade(0.2, theme.serieATim.text)};
+            }
+          }
+        }
+      }
+    `};
+
+  ${({ idCompetition }) =>
     idCompetition === '2021' &&
     css`
       font-family: 'Poppins', sans-serif;

@@ -127,7 +127,10 @@ export const Home: React.FC = () => {
             >
               <img src={bundesligaLogo} alt="Bundesliga" />
             </NavLink>
-            <NavLink to="/" onMouseOver={handleHoverCompetition}>
+            <NavLink
+              to="/competition/2019"
+              onMouseOver={handleHoverCompetition}
+            >
               <img src={serieALogo} alt="Serie A TIM" />
             </NavLink>
           </div>

@@ -119,5 +119,17 @@ declare module 'styled-components' {
         };
       };
     };
+
+    serieATim: {
+      colors: {
+        primary: string;
+        secondary: string;
+        tertiary: string;
+      };
+
+      text: string;
+
+      background: string;
+    };
   }
 }
